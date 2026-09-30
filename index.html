@@ -180,6 +180,12 @@
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
 </style>
+<script>
+  // 방문 통계(GoatCounter, 쿠키 없음). 주소에 붙은 값(앱이 보내는 기기 정보, ?ref= 등)은 경로에 남기지 않는다.
+  // ?ref=, utm_source 는 GoatCounter 가 유입 경로로 따로 읽는다. 버튼 클릭은 data-goatcounter-click 으로 센다
+  window.goatcounter = { path: function () { return location.pathname; } };
+</script>
+<script data-goatcounter="https://duomo-app.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 
@@ -210,8 +216,8 @@
         <span data-l="en">Currently looking for Android beta testers.</span>
       </p>
       <div class="ctas">
-        <a class="btn primary" id="cta-main" href="#beta"><span data-l="ko">클로즈드 베타 참여하기</span><span data-l="en">Join the Closed Beta</span></a>
-        <a class="btn ghost" href="#video">▶ <span data-l="ko">영상 보기</span><span data-l="en">Watch the video</span></a>
+        <a class="btn primary" id="cta-main" href="#beta" data-goatcounter-click="cta-hero"><span data-l="ko">클로즈드 베타 참여하기</span><span data-l="en">Join the Closed Beta</span></a>
+        <a class="btn ghost" href="#video" data-goatcounter-click="video-hero">▶ <span data-l="ko">영상 보기</span><span data-l="en">Watch the video</span></a>
       </div>
       <div class="beta-badge"><span class="dot"></span><span data-l="ko">플레이스토어 클로즈드 테스트 진행 중</span><span data-l="en">Google Play Closed Testing</span></div>
       <div class="stage reveal">
@@ -324,7 +330,7 @@
         <p class="punch">If you'd like early access and want to help shape the app, I'd love to have you onboard.</p>
       </div>
       <div class="ctas" style="justify-content:flex-start">
-        <a class="btn primary" href="#beta"><span data-l="ko">클로즈드 베타 참여하기</span><span data-l="en">Join the Closed Beta</span></a>
+        <a class="btn primary" href="#beta" data-goatcounter-click="cta-story"><span data-l="ko">클로즈드 베타 참여하기</span><span data-l="en">Join the Closed Beta</span></a>
       </div>
       <div class="trust">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -346,13 +352,13 @@
         <li><span data-l="ko">개발자와 직접 피드백 가능</span><span data-l="en">Direct feedback with the developer</span></li>
       </ul>
       <div class="steps">
-        <div class="step"><strong><span data-l="ko">테스터 그룹 가입</span><span data-l="en">Join the tester group</span></strong><span data-l="ko">Play 스토어에서 쓰는 Google 계정으로 가입해요.</span><span data-l="en">Use the Google account you use on Play.</span><a class="step-link" data-link="group" hidden><span data-l="ko">그룹 가입하기 →</span><span data-l="en">Join the group →</span></a></div>
-        <div class="step"><strong><span data-l="ko">테스터 되기</span><span data-l="en">Become a tester</span></strong><span data-l="ko">참여 링크에서 "테스터 되기"를 눌러요. 가입 직후엔 반영까지 몇 분 걸릴 수 있어요.</span><span data-l="en">Open the opt-in link and tap "Become a tester". It can take a few minutes after joining.</span><a class="step-link" data-link="beta" hidden><span data-l="ko">테스터 되기 →</span><span data-l="en">Become a tester →</span></a></div>
+        <div class="step"><strong><span data-l="ko">테스터 그룹 가입</span><span data-l="en">Join the tester group</span></strong><span data-l="ko">Play 스토어에서 쓰는 Google 계정으로 가입해요.</span><span data-l="en">Use the Google account you use on Play.</span><a class="step-link" data-link="group" data-goatcounter-click="step-group" hidden><span data-l="ko">그룹 가입하기 →</span><span data-l="en">Join the group →</span></a></div>
+        <div class="step"><strong><span data-l="ko">테스터 되기</span><span data-l="en">Become a tester</span></strong><span data-l="ko">참여 링크에서 "테스터 되기"를 눌러요. 가입 직후엔 반영까지 몇 분 걸릴 수 있어요.</span><span data-l="en">Open the opt-in link and tap "Become a tester". It can take a few minutes after joining.</span><a class="step-link" data-link="beta" data-goatcounter-click="step-optin" hidden><span data-l="ko">테스터 되기 →</span><span data-l="en">Become a tester →</span></a></div>
         <div class="step"><strong><span data-l="ko">설치하고 14일</span><span data-l="en">Install, keep 14 days</span></strong><span data-l="ko">Play 스토어에서 설치하고, 지우지 말고 가끔 써 주세요.</span><span data-l="en">Install from Play and keep it for 14 days.</span></div>
       </div>
       <div class="ctas" style="margin-top:0">
-        <a class="btn primary" id="cta-beta" aria-disabled="true"><span data-l="ko">모집 준비 중이에요</span><span data-l="en">Opening soon</span></a>
-        <a class="btn ghost" href="feedback.html"><span data-l="ko">문제 신고 · 의견 보내기</span><span data-l="en">Report a bug · Feedback</span></a>
+        <a class="btn primary" id="cta-beta" data-goatcounter-click="cta-beta-group" aria-disabled="true"><span data-l="ko">모집 준비 중이에요</span><span data-l="en">Opening soon</span></a>
+        <a class="btn ghost" href="feedback.html" data-goatcounter-click="feedback-beta"><span data-l="ko">문제 신고 · 의견 보내기</span><span data-l="en">Report a bug · Feedback</span></a>
       </div>
       <p class="note center"><span data-l="ko">써 보다가 이상한 점이나 바라는 점이 있으면 앱의 설정 › 도움말 › "문제 신고 · 의견 보내기"로 알려 주세요.</span><span data-l="en">Found something off or have an idea? Use Settings › Help › "Report a bug · Send feedback" in the app.</span></p>
     </div>
@@ -364,7 +370,7 @@
     <div class="links">
       <a href="https://bgiseok.github.io/duomo-legal/privacy.html"><span data-l="ko">개인정보 처리방침</span><span data-l="en">Privacy Policy</span></a>
       <a href="https://bgiseok.github.io/duomo-legal/terms.html"><span data-l="ko">이용약관</span><span data-l="en">Terms of Use</span></a>
-      <a href="https://bgiseok.github.io/duomo-legal/support.html"><span data-l="ko">후원하기</span><span data-l="en">Support</span></a>
+      <a href="https://bgiseok.github.io/duomo-legal/support.html" data-goatcounter-click="support"><span data-l="ko">후원하기</span><span data-l="en">Support</span></a>
       <a href="feedback.html"><span data-l="ko">문제 신고 · 의견 보내기</span><span data-l="en">Report a bug · Feedback</span></a>
     </div>
     <p style="margin:0"><span data-l="ko">Galaxy와 Galaxy Z Fold는 Samsung Electronics의 상표입니다. Duomo는 Samsung 및 Google과 관련이 없습니다.</span><span data-l="en">Galaxy and Galaxy Z Fold are trademarks of Samsung Electronics. Duomo is not affiliated with Samsung or Google.</span></p>

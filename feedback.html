@@ -48,6 +48,12 @@
   .alt { font-size: 14px; color: var(--faint); margin: 14px 0 60px; }
   .alt a { color: var(--accent-soft); }
 </style>
+<script>
+  // 방문 통계(GoatCounter, 쿠키 없음). 주소에 붙은 값(앱이 보내는 기기 정보, ?ref= 등)은 경로에 남기지 않는다.
+  // ?ref=, utm_source 는 GoatCounter 가 유입 경로로 따로 읽는다. 버튼 클릭은 data-goatcounter-click 으로 센다
+  window.goatcounter = { path: function () { return location.pathname; } };
+</script>
+<script data-goatcounter="https://duomo-app.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 <header>
