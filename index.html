@@ -152,6 +152,8 @@
     border-radius: 50%; background: rgba(10, 132, 255, .18); color: var(--accent-soft); font-weight: 700; font-size: 15px; margin-bottom: 14px; }
   .step strong { display: block; font-size: 17px; margin-bottom: 4px; }
   .step span { font-size: 15px; color: var(--muted); }
+  .step-link { display: inline-block; margin-top: 12px; font-size: 15px; font-weight: 600; color: var(--accent-soft); }
+  .step-link span { color: inherit; font-size: inherit; }
   @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
   .center { text-align: center; }
 
@@ -317,8 +319,8 @@
         <p style="color:var(--muted);margin:0 auto;max-width:34em"><span data-l="ko">Google Play 정식 출시 전, 14일 동안 함께 써 줄 테스터를 모집해요. 안드로이드 12 이상이면 폴드가 아니어도 괜찮아요.</span><span data-l="en">Before the Google Play launch, we're looking for testers to use Duomo for 14 days. Any phone on Android 12 or later works; it doesn't have to be a Fold.</span></p>
       </div>
       <div class="steps">
-        <div class="step"><strong><span data-l="ko">테스터 그룹 가입</span><span data-l="en">Join the tester group</span></strong><span data-l="ko">Play 스토어에서 쓰는 Google 계정으로 가입해요.</span><span data-l="en">Use the Google account you use on Play.</span></div>
-        <div class="step"><strong><span data-l="ko">테스터 되기</span><span data-l="en">Become a tester</span></strong><span data-l="ko">참여 링크에서 "테스터 되기"를 눌러요.</span><span data-l="en">Open the opt-in link and tap "Become a tester".</span></div>
+        <div class="step"><strong><span data-l="ko">테스터 그룹 가입</span><span data-l="en">Join the tester group</span></strong><span data-l="ko">Play 스토어에서 쓰는 Google 계정으로 가입해요.</span><span data-l="en">Use the Google account you use on Play.</span><a class="step-link" data-link="group" hidden><span data-l="ko">그룹 가입하기 →</span><span data-l="en">Join the group →</span></a></div>
+        <div class="step"><strong><span data-l="ko">테스터 되기</span><span data-l="en">Become a tester</span></strong><span data-l="ko">참여 링크에서 "테스터 되기"를 눌러요. 가입 직후엔 반영까지 몇 분 걸릴 수 있어요.</span><span data-l="en">Open the opt-in link and tap "Become a tester". It can take a few minutes after joining.</span><a class="step-link" data-link="beta" hidden><span data-l="ko">테스터 되기 →</span><span data-l="en">Become a tester →</span></a></div>
         <div class="step"><strong><span data-l="ko">설치하고 14일</span><span data-l="en">Install, keep 14 days</span></strong><span data-l="ko">Play 스토어에서 설치하고, 지우지 말고 가끔 써 주세요.</span><span data-l="en">Install from Play and keep it for 14 days.</span></div>
       </div>
       <div class="ctas" style="margin-top:0">
@@ -345,7 +347,12 @@
 
 <script>
   // 링크: 비어 있으면 아직 없음. beta = 테스터 참여 링크(Google 그룹), play = 정식 출시 뒤 스토어 주소
-  var LINKS = { beta: '', play: '' };
+  // group = 테스터 Google 그룹(가입해야 참여 링크가 열린다), beta = Play 비공개 테스트 참여 링크
+  var LINKS = {
+    group: 'https://groups.google.com/g/duomo-testers',
+    beta: 'https://play.google.com/apps/testing/com.bgiseok.crease',
+    play: ''
+  };
 
   var root = document.documentElement;
   function applyLang(lang) {
@@ -366,9 +373,14 @@
     applyLang(next);
   });
 
-  if (LINKS.beta) {
+  document.querySelectorAll('[data-link]').forEach(function (a) {
+    var url = LINKS[a.dataset.link];
+    if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.hidden = false; }
+  });
+  if (LINKS.group) {
+    // 첫 단계(그룹 가입)부터 시작하게 한다. 가입한 뒤 2단계 링크로 테스터 되기
     var b = document.getElementById('cta-beta');
-    b.href = LINKS.beta; b.target = '_blank'; b.rel = 'noopener'; b.removeAttribute('aria-disabled');
+    b.href = LINKS.group; b.target = '_blank'; b.rel = 'noopener'; b.removeAttribute('aria-disabled');
     b.innerHTML = '<span data-l="ko">테스터 참여하기</span><span data-l="en">Join as a tester</span>';
   }
   if (LINKS.play) {
