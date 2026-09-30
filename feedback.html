@@ -53,7 +53,6 @@
   // ?ref=, utm_source 는 GoatCounter 가 유입 경로로 따로 읽는다. 버튼 클릭은 data-goatcounter-click 으로 센다
   window.goatcounter = { path: function () { return location.pathname; } };
 </script>
-<script data-goatcounter="https://duomo-app.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 <header>
@@ -92,6 +91,10 @@
   document.getElementById('open').href = url;
   document.getElementById('open-en').href = url;
 
+  // 앱이 붙인 기기 정보가 방문 통계로 넘어가지 않게 주소에서 지운다(설문 칸에는 이미 채웠다)
+  var lang = q.get('lang');
+  history.replaceState(null, '', location.pathname + (lang ? '?lang=' + encodeURIComponent(lang) : '') + location.hash);
+
   // 앱에서 열었으면 자동으로 채운 정보를 보여 준다
   var info = document.getElementById('info');
   [['version', '버전', 'Version'], ['device', '기기', 'Device'], ['screen', '화면', 'Screen']].forEach(function (f) {
@@ -108,5 +111,7 @@
     document.documentElement.lang = next;
   });
 </script>
+<!-- 주소를 정리한 뒤에 불러와야 기기 정보가 통계로 가지 않는다 -->
+<script data-goatcounter="https://duomo-app.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
