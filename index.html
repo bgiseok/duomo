@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Duomo — Android, 익숙하게.</title>
+<meta name="description" content="광고 없는 깔끔한 안드로이드 홈 화면 런처. 바형부터 폴더블까지 자연스럽게. An ad-free, clean Android home screen for every screen.">
+<meta name="theme-color" content="#07080d">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Duomo — Android, 익숙하게.">
+<meta property="og:description" content="광고 없는 깔끔한 홈. 바형부터 폴더블까지 자연스럽게.">
+<meta property="og:image" content="https://bgiseok.github.io/duomo/assets/og-ko.png">
+<meta property="og:url" content="https://bgiseok.github.io/duomo/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<script>
+  // 언어: ?lang=ko|en → 저장한 값 → 브라우저 언어. 첫 화면이 그려지기 전에 정한다
+  (function () {
+    var q = new URLSearchParams(location.search).get('lang'), saved = null;
+    try { saved = localStorage.getItem('duomo-lang'); } catch (e) {}
+    var lang = q === 'ko' || q === 'en' ? q : saved || ((navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en');
+    document.documentElement.lang = lang;
+  })();
+</script>
+<style>
+  :root {
+    --bg: #07080d;
+    --bg-raise: #10121b;
+    --line: rgba(255, 255, 255, .09);
+    --glass: rgba(255, 255, 255, .055);
+    --text: #f4f5f9;
+    --muted: #a2a8ba;
+    --faint: #6f7589;
+    --accent: #0a84ff;
+    --accent-soft: #64b5ff;
+    --warm: #f4a35c;
+    --radius: 22px;
+    --gutter: clamp(16px, 4vw, 40px);
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); color-scheme: dark; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+    font-size: 17px; line-height: 1.6; letter-spacing: -.01em; word-break: keep-all; overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  html[lang="ko"] [data-l="en"], html[lang="en"] [data-l="ko"] { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+  img, video { display: block; max-width: 100%; height: auto; }
+  .wrap { width: min(var(--max), 100% - 2 * var(--gutter)); margin-inline: auto; }
+
+  /* 머리 */
+  header {
+    position: fixed; inset: 0 0 auto; z-index: 10;
+    background: rgba(7, 8, 13, .62); backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px);
+    border-bottom: 1px solid transparent; transition: border-color .3s;
+  }
+  header.scrolled { border-bottom-color: var(--line); }
+  .bar { height: 58px; display: flex; align-items: center; gap: 20px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -.02em; }
+  .brand img { width: 28px; height: 28px; border-radius: 7px; }
+  nav { margin-left: auto; display: flex; align-items: center; gap: 22px; font-size: 15px; color: var(--muted); }
+  nav a:hover { color: var(--text); }
+  .lang {
+    font: inherit; font-size: 13px; font-weight: 600; color: var(--text); cursor: pointer;
+    background: var(--glass); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px;
+  }
+  @media (max-width: 720px) { nav a { display: none; } }
+
+  /* 첫 화면 */
+  .hero { position: relative; padding: 138px 0 0; text-align: center; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, var(--bg) 0%, rgba(7, 8, 13, .55) 38%, rgba(7, 8, 13, .2) 62%, var(--bg) 100%),
+                url(assets/dunes.webp) center 70% / cover no-repeat;
+  }
+  .eyebrow { display: inline-flex; gap: 8px; align-items: center; font-size: 14px; color: var(--muted);
+    background: var(--glass); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; }
+  .eyebrow b { color: var(--warm); font-weight: 600; }
+  h1 { font-size: clamp(44px, 8.4vw, 96px); line-height: 1.04; letter-spacing: -.045em; margin: 22px 0 18px; font-weight: 800; }
+  .lead { font-size: clamp(18px, 2.3vw, 22px); color: #cfd3df; margin: 0 auto; max-width: 30em; line-height: 1.5; }
+  .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 24px;
+    border-radius: 14px; font-weight: 600; font-size: 16px; transition: transform .2s, background .2s;
+  }
+  .btn:active { transform: scale(.97); }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.primary:hover { background: #2a95ff; }
+  .btn.ghost { background: var(--glass); border: 1px solid var(--line); }
+  .btn.ghost:hover { background: rgba(255, 255, 255, .1); }
+  .btn[aria-disabled="true"] { background: var(--glass); color: var(--muted); border: 1px solid var(--line); pointer-events: none; }
+
+  /* 기기 틀: 폴드 화면은 모서리가 거의 각져 있다 */
+  .device { position: relative; background: #16171d; border: 1px solid #2c2e36; padding: 7px; border-radius: 16px;
+    box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .8), 0 0 0 1px rgba(0, 0, 0, .6); }
+  .device img { width: 100%; border-radius: 10px; background: #000; }
+  .stage { position: relative; width: min(880px, 100%); margin: 64px auto 0; padding-bottom: 72px; }
+  .stage .inner { width: 86%; }
+  .stage .cover { position: absolute; width: 23%; right: 0; bottom: 24px; }
+
+  .pills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 8px 0 0; }
+  .pill { background: var(--bg-raise); border: 1px solid var(--line); border-radius: 18px; padding: 18px 18px 16px; }
+  .pill strong { display: block; font-size: 17px; }
+  .pill span { font-size: 14px; color: var(--muted); }
+  @media (max-width: 860px) { .pills { grid-template-columns: repeat(2, 1fr); } }
+
+  /* 기능 */
+  section { padding: clamp(80px, 11vw, 140px) 0 0; }
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+  .feature.flip .copy { order: 2; }
+  .kicker { font-size: 14px; font-weight: 600; color: var(--accent-soft); letter-spacing: .02em; margin: 0 0 12px; }
+  h2 { font-size: clamp(34px, 5vw, 56px); line-height: 1.1; letter-spacing: -.035em; margin: 0 0 14px; font-weight: 800; }
+  h2 small { display: block; font-size: .5em; color: var(--muted); letter-spacing: -.02em; font-weight: 600; margin-top: 10px; }
+  .copy p { color: #c3c8d6; margin: 18px 0 0; max-width: 28em; }
+  .visual { display: flex; justify-content: center; gap: 18px; align-items: flex-end; }
+  .phone { width: min(250px, 42vw); }
+  .phone.solo { width: min(290px, 70vw); }
+  .cap { text-align: center; font-size: 13px; color: var(--faint); margin-top: 10px; }
+  .fold-pair { position: relative; width: 100%; }
+  .fold-pair .inner { width: 88%; }
+  .fold-pair .cover { position: absolute; width: 27%; right: 0; bottom: -28px; }
+  @media (max-width: 860px) {
+    .feature { grid-template-columns: 1fr; }
+    .feature.flip .copy { order: 0; }
+    .copy { text-align: center; }
+    .copy p { margin-inline: auto; }
+  }
+
+  /* 영상 */
+  .video-card { display: grid; grid-template-columns: 1fr auto; gap: clamp(32px, 6vw, 80px); align-items: center;
+    background: linear-gradient(135deg, #121626, #0b0c12 60%); border: 1px solid var(--line); border-radius: 32px;
+    padding: clamp(28px, 5vw, 64px); overflow: hidden; }
+  .video-card video { width: min(300px, 64vw); border-radius: 24px; background: #000; border: 1px solid var(--line); }
+  @media (max-width: 860px) { .video-card { grid-template-columns: 1fr; justify-items: center; text-align: center; } }
+
+  /* 이야기 */
+  .story { max-width: 720px; margin-inline: auto; }
+  .story p { color: #c7cbd8; font-size: 18px; margin: 0 0 18px; }
+  .story .punch { color: var(--text); font-weight: 600; }
+  .note { font-size: 14px; color: var(--faint); margin-top: 14px; }
+
+  /* 베타 */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 36px 0 30px; counter-reset: s; }
+  .step { background: var(--bg-raise); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 30px; height: 30px;
+    border-radius: 50%; background: rgba(10, 132, 255, .18); color: var(--accent-soft); font-weight: 700; font-size: 15px; margin-bottom: 14px; }
+  .step strong { display: block; font-size: 17px; margin-bottom: 4px; }
+  .step span { font-size: 15px; color: var(--muted); }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+  .center { text-align: center; }
+
+  footer { margin-top: clamp(100px, 12vw, 160px); border-top: 1px solid var(--line); padding: 36px 0 48px; font-size: 14px; color: var(--faint); }
+  footer .links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 14px; color: var(--muted); }
+  footer .links a:hover { color: var(--text); }
+
+  /* 스크롤 등장 */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap bar">
+    <a class="brand" href="#top"><img src="assets/icon-192.png" alt="" width="28" height="28">Duomo</a>
+    <nav>
+      <a href="#features"><span data-l="ko">특징</span><span data-l="en">Features</span></a>
+      <a href="#video"><span data-l="ko">영상</span><span data-l="en">Video</span></a>
+      <a href="#story"><span data-l="ko">만든 이유</span><span data-l="en">Story</span></a>
+      <a href="#beta"><span data-l="ko">베타 테스트</span><span data-l="en">Beta</span></a>
+      <button class="lang" type="button" id="lang-toggle" aria-label="Language"><span data-l="ko">EN</span><span data-l="en">한국어</span></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow"><b>●</b><span data-l="ko">홈 화면 런처 · 모든 기능 무료</span><span data-l="en">Home screen launcher · Every feature free</span></span>
+      <h1><span data-l="ko">Android,<br>익숙하게.</span><span data-l="en">Android.<br>Made Familiar.</span></h1>
+      <p class="lead">
+        <span data-l="ko">새로운 기기. 익숙한 경험.<br>바형부터 폴더블까지.</span>
+        <span data-l="en">A new device. A familiar experience.<br>From foldables to everyday phones.</span>
+      </p>
+      <div class="ctas">
+        <a class="btn primary" id="cta-main" href="#beta"><span data-l="ko">베타 테스트 참여</span><span data-l="en">Join the beta</span></a>
+        <a class="btn ghost" href="#video">▶ <span data-l="ko">영상 보기</span><span data-l="en">Watch the video</span></a>
+      </div>
+      <div class="stage reveal">
+        <div class="device inner"><img data-shot="f8-inner" width="1224" height="924" alt="" fetchpriority="high"></div>
+        <div class="device cover"><img data-shot="f8-cover" width="620" height="980" alt=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="pills reveal">
+      <div class="pill"><strong><span data-l="ko">광고 0개</span><span data-l="en">Zero ads</span></strong><span data-l="ko">설정할 때도, 검색할 때도</span><span data-l="en">Not in settings, not in search</span></div>
+      <div class="pill"><strong><span data-l="ko">계정 없이</span><span data-l="en">No account</span></strong><span data-l="ko">모든 설정은 기기 안에만</span><span data-l="en">Every setting stays on your phone</span></div>
+      <div class="pill"><strong><span data-l="ko">권한은 하나</span><span data-l="en">One permission</span></strong><span data-l="ko">연락처(선택)만</span><span data-l="en">Contacts, and it's optional</span></div>
+      <div class="pill"><strong><span data-l="ko">모든 기능 무료</span><span data-l="en">Free, all of it</span></strong><span data-l="ko">결제 화면도, 체험 기간도 없이</span><span data-l="en">No paywalls, no trials</span></div>
+    </div>
+  </div>
+
+  <section id="features">
+    <div class="wrap feature reveal">
+      <div class="copy">
+        <p class="kicker"><span data-l="ko">홈 화면</span><span data-l="en">Home screen</span></p>
+        <h2><span data-l="ko">보다. 바로.<small>광고 없이.</small></span><span data-l="en">See More.<small>Wait Less. No ads. No interruptions.</small></span></h2>
+        <p><span data-l="ko">반투명 독과 폴더, 둥근 모서리로 맞춘 위젯, 두 글자면 찾는 검색. 홈은 홈 일만 합니다.</span><span data-l="en">A translucent dock and folders, widgets with matching rounded corners, and search that finds things in two letters. Home just does home.</span></p>
+      </div>
+      <div class="visual"><div class="device phone solo"><img data-shot="f7-home-aura" width="540" height="1260" alt="" loading="lazy"></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap feature flip reveal">
+      <div class="copy">
+        <p class="kicker">Aura</p>
+        <h2><span data-l="ko">같은 결로.<small>모든 아이콘을 하나처럼.</small></span><span data-l="en">One Visual Language.<small>Every icon belongs together.</small></span></h2>
+        <p><span data-l="ko">기본 앱은 Duomo가 직접 그린 Aura 아이콘으로, 나머지 앱도 같은 모양과 빛으로 맞춰요. 캘린더는 오늘 날짜를, 시계는 지금 시각을 보여 줘요.</span><span data-l="en">Core apps get Duomo-designed Aura icons, and every other app is matched to the same shape and light. The calendar shows today's date, and the clock shows the time.</span></p>
+      </div>
+      <div class="visual">
+        <div><div class="device phone"><img data-shot="f7-home-plain" width="540" height="1260" alt="" loading="lazy"></div><div class="cap"><span data-l="ko">기본</span><span data-l="en">Standard</span></div></div>
+        <div><div class="device phone"><img data-shot="f7-home-aura" width="540" height="1260" alt="" loading="lazy"></div><div class="cap">Aura</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap feature reveal">
+      <div class="copy">
+        <p class="kicker"><span data-l="ko">앱 보관함</span><span data-l="en">App Library</span></p>
+        <h2><span data-l="ko">비울수록 편하게.<small>필요한 것만 앞에.</small></span><span data-l="en">Less on Screen.<small>Keep your home clear and focused.</small></span></h2>
+        <p><span data-l="ko">홈엔 자주 쓰는 앱만. 나머지는 앱 보관함이 종류별로 정리하고, 보관함 안에서 바로 찾아요.</span><span data-l="en">Keep only what you use on Home. The App Library sorts everything else by category, with search built in.</span></p>
+      </div>
+      <div class="visual">
+        <div class="device phone"><img data-shot="f7-library" width="540" height="1260" alt="" loading="lazy"></div>
+        <div class="device phone"><img data-shot="f7-search" width="540" height="1260" alt="" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap feature flip reveal">
+      <div class="copy">
+        <p class="kicker"><span data-l="ko">바형부터 폴더블까지</span><span data-l="en">From foldables to everyday phones</span></p>
+        <h2><span data-l="ko">커버는 커버대로.<small>펼치면 펼친 대로.</small></span><span data-l="en">Folded or open.<small>Each screen gets its own fit.</small></span></h2>
+        <p><span data-l="ko">갤럭시 Z 폴드7·폴드8·폴드8 울트라는 커버와 펼친 화면을 기종별로 맞췄어요. 일반 폰도 화면 비율과 카메라 위치를 읽어 여백을 맞춰요.</span><span data-l="en">Galaxy Z Fold7, Fold8 and Fold8 Ultra get per-model layouts for the cover and the inner screen. On any other phone, margins follow your screen ratio and camera cutout.</span></p>
+      </div>
+      <div class="visual">
+        <div class="fold-pair">
+          <div class="device inner"><img data-shot="f8-inner-library" width="1224" height="924" alt="" loading="lazy"></div>
+          <div class="device cover"><img data-shot="f8-cover" width="620" height="980" alt="" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap feature reveal">
+      <div class="copy">
+        <p class="kicker"><span data-l="ko">백업 · 복원</span><span data-l="en">Backup · Restore</span></p>
+        <h2><span data-l="ko">그대로.<br>다시 그대로.<small>레이아웃 백업 및 복원.</small></span><span data-l="en">Just as You Left It.<small>Backup and restore instantly.</small></span></h2>
+        <p><span data-l="ko">공들인 배치는 스스로 옮기지 않아요. 파일로 내보내 두면 새 폰에서도, 초기화한 뒤에도 미리 보고 되돌릴 수 있어요.</span><span data-l="en">Duomo never rearranges your layout on its own. Export it to a file and bring it back on a new phone or after a reset, with a preview first.</span></p>
+      </div>
+      <div class="visual"><div class="device phone solo"><img data-shot="f7-backup" width="540" height="1260" alt="" loading="lazy"></div></div>
+    </div>
+  </section>
+
+  <section id="video">
+    <div class="wrap reveal">
+      <div class="video-card">
+        <div>
+          <p class="kicker"><span data-l="ko">18초 영상</span><span data-l="en">18-second tour</span></p>
+          <h2><span data-l="ko">내 폰답게.<small>계정 없이. 클라우드 없이.</small></span><span data-l="en">Yours, by Design.<small>No account. No cloud. No ad tracking.</small></span></h2>
+          <p class="note" style="color:var(--muted);font-size:16px;max-width:26em"><span data-l="ko">모든 설정은 이 기기 안에만 저장돼요. 사진은 직접 고른 것만, 처리도 기기 안에서.</span><span data-l="en">Every setting is stored on your device. Photos are only the ones you pick, processed on the device.</span></p>
+        </div>
+        <video id="promo" muted loop playsinline preload="none" width="720" height="1280" aria-label="Duomo promo video"></video>
+      </div>
+    </div>
+  </section>
+
+  <section id="story">
+    <div class="wrap story reveal">
+      <p class="kicker"><span data-l="ko">만든 이유</span><span data-l="en">Why Duomo</span></p>
+      <h2><span data-l="ko">굳이, 굳이<br>만들었습니다.</span><span data-l="en">I went out of my way.<br>Then a bit further.</span></h2>
+      <div data-l="ko">
+        <p>사과 세계관에서 15년 넘게 살다가 1년 전 갤럭시로 넘어왔습니다. 삼성페이, 여러 개 복사해 두는 클립보드처럼 "이걸 왜 이제 썼지" 싶은 기능이 정말 많았어요.</p>
+        <p>그런데 화면을 볼 때마다 <span class="punch">시각적으로 화가 나는 순간</span>이 적지 않았습니다. 제각각인 아이콘, 광고로 가득한 런처, 늘 어딘가 어색한 폴더블 커버 화면.</p>
+        <p class="punch">그래서 직접 만들었습니다. Duomo는 한 사람이 만드는 앱이에요.</p>
+      </div>
+      <div data-l="en">
+        <p>I lived in the fruit-shaped ecosystem for over 15 years, then switched to Galaxy a year ago. Samsung Pay, a clipboard that remembers more than one thing: so many things made me wonder why I hadn't switched sooner.</p>
+        <p>But visually? There were <span class="punch">plenty of moments that made me genuinely mad</span>. Mismatched icons, launchers full of ads, and a foldable cover screen that never quite felt right.</p>
+        <p class="punch">So I built one myself. Duomo is made by one person.</p>
+      </div>
+      <div class="ctas" style="justify-content:flex-start">
+        <a class="btn ghost" href="https://buymeacoffee.com/bgiseok" target="_blank" rel="noopener">☕ <span data-l="ko">커피 한 잔으로 응원하기</span><span data-l="en">Buy me a coffee</span></a>
+      </div>
+      <p class="note"><span data-l="ko">후원은 선택이에요. 후원하지 않아도 모든 기능은 똑같아요.</span><span data-l="en">Support is optional. Every feature works the same either way.</span></p>
+    </div>
+  </section>
+
+  <section id="beta">
+    <div class="wrap reveal">
+      <div class="center">
+        <p class="kicker"><span data-l="ko">비공개 베타</span><span data-l="en">Closed beta</span></p>
+        <h2><span data-l="ko">먼저 써 볼 분을 찾고 있어요.</span><span data-l="en">Be one of the first.</span></h2>
+        <p style="color:var(--muted);margin:0 auto;max-width:34em"><span data-l="ko">Google Play 정식 출시 전, 14일 동안 함께 써 줄 테스터를 모집해요. 안드로이드 12 이상이면 폴드가 아니어도 괜찮아요.</span><span data-l="en">Before the Google Play launch, we're looking for testers to use Duomo for 14 days. Any phone on Android 12 or later works; it doesn't have to be a Fold.</span></p>
+      </div>
+      <div class="steps">
+        <div class="step"><strong><span data-l="ko">테스터 그룹 가입</span><span data-l="en">Join the tester group</span></strong><span data-l="ko">Play 스토어에서 쓰는 Google 계정으로 가입해요.</span><span data-l="en">Use the Google account you use on Play.</span></div>
+        <div class="step"><strong><span data-l="ko">테스터 되기</span><span data-l="en">Become a tester</span></strong><span data-l="ko">참여 링크에서 "테스터 되기"를 눌러요.</span><span data-l="en">Open the opt-in link and tap "Become a tester".</span></div>
+        <div class="step"><strong><span data-l="ko">설치하고 14일</span><span data-l="en">Install, keep 14 days</span></strong><span data-l="ko">Play 스토어에서 설치하고, 지우지 말고 가끔 써 주세요.</span><span data-l="en">Install from Play and keep it for 14 days.</span></div>
+      </div>
+      <div class="ctas" style="margin-top:0">
+        <a class="btn primary" id="cta-beta" aria-disabled="true"><span data-l="ko">모집 준비 중이에요</span><span data-l="en">Opening soon</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="https://bgiseok.github.io/duomo-legal/privacy.html"><span data-l="ko">개인정보 처리방침</span><span data-l="en">Privacy Policy</span></a>
+      <a href="https://bgiseok.github.io/duomo-legal/terms.html"><span data-l="ko">이용약관</span><span data-l="en">Terms of Use</span></a>
+      <a href="https://bgiseok.github.io/duomo-legal/support.html"><span data-l="ko">후원하기</span><span data-l="en">Support</span></a>
+    </div>
+    <p style="margin:0"><span data-l="ko">Galaxy와 Galaxy Z Fold는 Samsung Electronics의 상표입니다. Duomo는 Samsung 및 Google과 관련이 없습니다.</span><span data-l="en">Galaxy and Galaxy Z Fold are trademarks of Samsung Electronics. Duomo is not affiliated with Samsung or Google.</span></p>
+    <p style="margin:6px 0 0">© 2026 Duomo</p>
+  </div>
+</footer>
+
+<script>
+  // 링크: 비어 있으면 아직 없음. beta = 테스터 참여 링크(Google 그룹), play = 정식 출시 뒤 스토어 주소
+  var LINKS = { beta: '', play: '' };
+
+  var root = document.documentElement;
+  function applyLang(lang) {
+    root.lang = lang;
+    document.querySelectorAll('img[data-shot]').forEach(function (img) {
+      img.src = 'assets/' + img.dataset.shot + '-' + lang + '.webp';
+    });
+    var v = document.getElementById('promo');
+    v.poster = 'assets/promo-' + lang + '.jpg';
+    var src = 'assets/promo-' + lang + '.mp4';
+    if (v.dataset.src !== src) { v.dataset.src = src; if (v.dataset.loaded) { v.src = src; v.play().catch(function () {}); } }
+    document.title = lang === 'ko' ? 'Duomo — Android, 익숙하게.' : 'Duomo — Android. Made Familiar.';
+  }
+  applyLang(root.lang);
+  document.getElementById('lang-toggle').addEventListener('click', function () {
+    var next = root.lang === 'ko' ? 'en' : 'ko';
+    try { localStorage.setItem('duomo-lang', next); } catch (e) {}
+    applyLang(next);
+  });
+
+  if (LINKS.beta) {
+    var b = document.getElementById('cta-beta');
+    b.href = LINKS.beta; b.target = '_blank'; b.rel = 'noopener'; b.removeAttribute('aria-disabled');
+    b.innerHTML = '<span data-l="ko">테스터 참여하기</span><span data-l="en">Join as a tester</span>';
+  }
+  if (LINKS.play) {
+    var m = document.getElementById('cta-main');
+    m.href = LINKS.play; m.target = '_blank'; m.rel = 'noopener';
+    m.innerHTML = '<span data-l="ko">Google Play에서 받기</span><span data-l="en">Get it on Google Play</span>';
+  }
+
+  var header = document.querySelector('header');
+  addEventListener('scroll', function () { header.classList.toggle('scrolled', scrollY > 8); }, { passive: true });
+
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in'); io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+  // 영상은 보일 때 불러와 재생(움직임 줄이기 설정이면 컨트롤만 두고 자동 재생하지 않는다)
+  var video = document.getElementById('promo');
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && !video.dataset.loaded) { video.dataset.loaded = '1'; video.src = video.dataset.src; }
+      if (reduce) { video.controls = true; return; }
+      if (e.isIntersecting) video.play().catch(function () { video.controls = true; }); else video.pause();
+    });
+  }, { threshold: .35 }).observe(video);
+</script>
+</body>
+</html>
