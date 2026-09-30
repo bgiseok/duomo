@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Duomo — Android, 익숙하게.</title>
-<meta name="description" content="광고 없는 깔끔한 안드로이드 홈 화면 런처. 바형부터 폴더블까지 자연스럽게. An ad-free, clean Android home screen for every screen.">
+<meta name="description" content="광고 없는 깔끔한 안드로이드 홈 화면 런처 Duomo. 플레이스토어 클로즈드 베타 테스터 모집 중. An ad-free Android launcher — now looking for closed beta testers.">
 <meta name="theme-color" content="#07080d">
 <meta name="color-scheme" content="dark">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Duomo — Android, 익숙하게.">
-<meta property="og:description" content="광고 없는 깔끔한 홈. 바형부터 폴더블까지 자연스럽게.">
+<meta property="og:description" content="광고 없는 깔끔한 홈. 플레이스토어 클로즈드 베타 테스터를 모집하고 있습니다.">
 <meta property="og:image" content="https://bgiseok.github.io/duomo/assets/og-ko.png">
 <meta property="og:url" content="https://bgiseok.github.io/duomo/">
 <meta name="twitter:card" content="summary_large_image">
@@ -143,6 +143,20 @@
   .story { max-width: 720px; margin-inline: auto; }
   .story p { color: #c7cbd8; font-size: 18px; margin: 0 0 18px; }
   .story .punch { color: var(--text); font-weight: 600; }
+  .story .kicker { color: var(--accent-soft); font-size: 14px; margin: 0 0 12px; }
+  .recruit { margin: 22px auto 0; max-width: 32em; font-size: clamp(15px, 1.8vw, 17px); color: var(--accent-soft); font-weight: 600; line-height: 1.5; }
+  .beta-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 6px 14px 6px 12px; border-radius: 999px;
+    font-size: 13px; font-weight: 600; color: #7ee2a0; background: rgba(48, 209, 88, .1); border: 1px solid rgba(48, 209, 88, .28); }
+  .beta-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #30d158; box-shadow: 0 0 0 0 rgba(48, 209, 88, .6); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(48, 209, 88, .55); } 70% { box-shadow: 0 0 0 8px rgba(48, 209, 88, 0); } 100% { box-shadow: 0 0 0 0 rgba(48, 209, 88, 0); } }
+  @media (prefers-reduced-motion: reduce) { .beta-badge .dot { animation: none; } }
+  .trust { display: flex; align-items: center; gap: 10px; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+  .trust svg { flex: none; color: var(--accent-soft); }
+  .perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 32px 0 0; padding: 0; list-style: none; }
+  .perks li { display: flex; gap: 10px; align-items: flex-start; background: rgba(10, 132, 255, .08); border: 1px solid rgba(10, 132, 255, .22);
+    border-radius: 16px; padding: 16px 18px; font-size: 16px; font-weight: 600; }
+  .perks li::before { content: "✓"; color: var(--accent-soft); font-weight: 800; }
+  @media (max-width: 760px) { .perks { grid-template-columns: 1fr; } }
   .note { font-size: 14px; color: var(--faint); margin-top: 14px; }
 
   /* 베타 */
@@ -175,7 +189,7 @@
     <nav>
       <a href="#features"><span data-l="ko">특징</span><span data-l="en">Features</span></a>
       <a href="#video"><span data-l="ko">영상</span><span data-l="en">Video</span></a>
-      <a href="#story"><span data-l="ko">만든 이유</span><span data-l="en">Story</span></a>
+      <a href="#story"><span data-l="ko">왜 베타?</span><span data-l="en">Why beta</span></a>
       <a href="#beta"><span data-l="ko">베타 테스트</span><span data-l="en">Beta</span></a>
       <button class="lang" type="button" id="lang-toggle" aria-label="Language"><span data-l="ko">EN</span><span data-l="en">한국어</span></button>
     </nav>
@@ -191,10 +205,15 @@
         <span data-l="ko">새로운 기기. 익숙한 경험.<br>바형부터 폴더블까지.</span>
         <span data-l="en">A new device. A familiar experience.<br>From foldables to everyday phones.</span>
       </p>
+      <p class="recruit">
+        <span data-l="ko">현재 플레이스토어 출시를 위한<br>클로즈드 베타 테스터를 모집하고 있습니다.</span>
+        <span data-l="en">Currently looking for Android beta testers.</span>
+      </p>
       <div class="ctas">
-        <a class="btn primary" id="cta-main" href="#beta"><span data-l="ko">베타 테스트 참여</span><span data-l="en">Join the beta</span></a>
+        <a class="btn primary" id="cta-main" href="#beta"><span data-l="ko">클로즈드 베타 참여하기</span><span data-l="en">Join the Closed Beta</span></a>
         <a class="btn ghost" href="#video">▶ <span data-l="ko">영상 보기</span><span data-l="en">Watch the video</span></a>
       </div>
+      <div class="beta-badge"><span class="dot"></span><span data-l="ko">플레이스토어 클로즈드 테스트 진행 중</span><span data-l="en">Google Play Closed Testing</span></div>
       <div class="stage reveal">
         <div class="device inner"><img data-shot="f8-inner" width="1224" height="924" alt="" fetchpriority="high"></div>
         <div class="device cover"><img data-shot="f8-cover" width="620" height="980" alt=""></div>
@@ -292,32 +311,40 @@
 
   <section id="story">
     <div class="wrap story reveal">
-      <p class="kicker"><span data-l="ko">만든 이유</span><span data-l="en">Why Duomo</span></p>
-      <h2><span data-l="ko">굳이, 굳이<br>만들었습니다.</span><span data-l="en">I went out of my way.<br>Then a bit further.</span></h2>
+      <p class="kicker"><span data-l="ko">클로즈드 베타</span><span data-l="en">Closed beta</span></p>
+      <h2><span data-l="ko">왜 베타테스터를<br>찾고 있을까요?</span><span data-l="en">Why I'm Looking<br>For Testers</span></h2>
       <div data-l="ko">
-        <p>사과 세계관에서 15년 넘게 살다가 1년 전 갤럭시로 넘어왔습니다. 삼성페이, 여러 개 복사해 두는 클립보드처럼 "이걸 왜 이제 썼지" 싶은 기능이 정말 많았어요.</p>
-        <p>그런데 화면을 볼 때마다 <span class="punch">시각적으로 화가 나는 순간</span>이 적지 않았습니다. 제각각인 아이콘, 광고로 가득한 런처, 늘 어딘가 어색한 폴더블 커버 화면.</p>
-        <p class="punch">그래서 직접 만들었습니다. Duomo는 한 사람이 만드는 앱이에요.</p>
+        <p>Duomo는 현재 <span class="punch">플레이스토어 클로즈드 테스트</span> 단계에 있습니다.</p>
+        <p>출시 전 실제 사용자 피드백을 받고 싶습니다.</p>
+        <p class="punch">초기 사용자로 참여해주시면 앱을 더 좋은 방향으로 발전시키는 데 큰 도움이 됩니다.</p>
       </div>
       <div data-l="en">
-        <p>I lived in the fruit-shaped ecosystem for over 15 years, then switched to Galaxy a year ago. Samsung Pay, a clipboard that remembers more than one thing: so many things made me wonder why I hadn't switched sooner.</p>
-        <p>But visually? There were <span class="punch">plenty of moments that made me genuinely mad</span>. Mismatched icons, launchers full of ads, and a foldable cover screen that never quite felt right.</p>
-        <p class="punch">So I built one myself. Duomo is made by one person.</p>
+        <p>Duomo is currently in <span class="punch">Google Play Closed Testing</span>.</p>
+        <p>Before public release, I need feedback from real Android users.</p>
+        <p class="punch">If you'd like early access and want to help shape the app, I'd love to have you onboard.</p>
       </div>
       <div class="ctas" style="justify-content:flex-start">
-        <a class="btn ghost" href="https://buymeacoffee.com/bgiseok" target="_blank" rel="noopener">☕ <span data-l="ko">커피 한 잔으로 응원하기</span><span data-l="en">Buy me a coffee</span></a>
+        <a class="btn primary" href="#beta"><span data-l="ko">클로즈드 베타 참여하기</span><span data-l="en">Join the Closed Beta</span></a>
       </div>
-      <p class="note"><span data-l="ko">후원은 선택이에요. 후원하지 않아도 모든 기능은 똑같아요.</span><span data-l="en">Support is optional. Every feature works the same either way.</span></p>
+      <div class="trust">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span><span data-l="ko">개인 개발자가 직접 만들고 운영합니다.</span><span data-l="en">Built and maintained by an independent developer.</span></span>
+      </div>
     </div>
   </section>
 
   <section id="beta">
     <div class="wrap reveal">
       <div class="center">
-        <p class="kicker"><span data-l="ko">비공개 베타</span><span data-l="en">Closed beta</span></p>
-        <h2><span data-l="ko">먼저 써 볼 분을 찾고 있어요.</span><span data-l="en">Be one of the first.</span></h2>
+        <p class="kicker"><span data-l="ko">클로즈드 베타</span><span data-l="en">Closed beta</span></p>
+        <h2><span data-l="ko">Duomo의 첫 사용자로<br>참여해주세요.</span><span data-l="en">Help shape Duomo.<br>Before everyone else.</span></h2>
         <p style="color:var(--muted);margin:0 auto;max-width:34em"><span data-l="ko">Google Play 정식 출시 전, 14일 동안 함께 써 줄 테스터를 모집해요. 안드로이드 12 이상이면 폴드가 아니어도 괜찮아요.</span><span data-l="en">Before the Google Play launch, we're looking for testers to use Duomo for 14 days. Any phone on Android 12 or later works; it doesn't have to be a Fold.</span></p>
       </div>
+      <ul class="perks">
+        <li><span data-l="ko">출시 전 먼저 사용 가능</span><span data-l="en">Early access before release</span></li>
+        <li><span data-l="ko">기능 개선에 직접 참여</span><span data-l="en">Help shape future features</span></li>
+        <li><span data-l="ko">개발자와 직접 피드백 가능</span><span data-l="en">Direct feedback with the developer</span></li>
+      </ul>
       <div class="steps">
         <div class="step"><strong><span data-l="ko">테스터 그룹 가입</span><span data-l="en">Join the tester group</span></strong><span data-l="ko">Play 스토어에서 쓰는 Google 계정으로 가입해요.</span><span data-l="en">Use the Google account you use on Play.</span><a class="step-link" data-link="group" hidden><span data-l="ko">그룹 가입하기 →</span><span data-l="en">Join the group →</span></a></div>
         <div class="step"><strong><span data-l="ko">테스터 되기</span><span data-l="en">Become a tester</span></strong><span data-l="ko">참여 링크에서 "테스터 되기"를 눌러요. 가입 직후엔 반영까지 몇 분 걸릴 수 있어요.</span><span data-l="en">Open the opt-in link and tap "Become a tester". It can take a few minutes after joining.</span><a class="step-link" data-link="beta" hidden><span data-l="ko">테스터 되기 →</span><span data-l="en">Become a tester →</span></a></div>
@@ -381,7 +408,7 @@
     // 첫 단계(그룹 가입)부터 시작하게 한다. 가입한 뒤 2단계 링크로 테스터 되기
     var b = document.getElementById('cta-beta');
     b.href = LINKS.group; b.target = '_blank'; b.rel = 'noopener'; b.removeAttribute('aria-disabled');
-    b.innerHTML = '<span data-l="ko">테스터 참여하기</span><span data-l="en">Join as a tester</span>';
+    b.innerHTML = '<span data-l="ko">클로즈드 베타 참여하기</span><span data-l="en">Join the Closed Beta</span>';
   }
   if (LINKS.play) {
     var m = document.getElementById('cta-main');
