@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Duomo — 문제 신고 · 의견 보내기</title>
+<meta name="description" content="Duomo 버그 제보와 개선 요청. Report a bug or suggest an improvement for Duomo.">
+<meta name="theme-color" content="#07080d">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search).get('lang'), saved = null;
+    try { saved = localStorage.getItem('duomo-lang'); } catch (e) {}
+    var lang = q === 'ko' || q === 'en' ? q : saved || ((navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en');
+    document.documentElement.lang = lang;
+  })();
+</script>
+<style>
+  :root {
+    --bg: #07080d; --bg-raise: #10121b; --line: rgba(255, 255, 255, .09); --glass: rgba(255, 255, 255, .055);
+    --text: #f4f5f9; --muted: #a2a8ba; --faint: #6f7589; --accent: #0a84ff; --accent-soft: #64b5ff;
+    --gutter: clamp(16px, 4vw, 40px);
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); color-scheme: dark; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: "Pretendard Variable", Pretendard, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+    font-size: 17px; line-height: 1.6; letter-spacing: -.01em; word-break: keep-all; -webkit-font-smoothing: antialiased; }
+  html[lang="ko"] [data-l="en"], html[lang="en"] [data-l="ko"] { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(760px, 100% - 2 * var(--gutter)); margin-inline: auto; }
+  header { border-bottom: 1px solid var(--line); }
+  .bar { height: 58px; display: flex; align-items: center; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
+  .brand img { width: 28px; height: 28px; border-radius: 7px; }
+  .lang { margin-left: auto; font: inherit; font-size: 13px; font-weight: 600; color: var(--text); cursor: pointer;
+    background: var(--glass); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+  h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.15; letter-spacing: -.035em; margin: 40px 0 10px; font-weight: 800; }
+  .lead { color: var(--muted); margin: 0 0 18px; }
+  .info { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+  .chip { font-size: 13px; color: var(--muted); background: var(--bg-raise); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; }
+  .chip b { color: var(--text); font-weight: 600; }
+  .frame { background: #fff; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); }
+  iframe { display: block; width: 100%; height: 1500px; border: 0; }
+  .alt { font-size: 14px; color: var(--faint); margin: 14px 0 60px; }
+  .alt a { color: var(--accent-soft); }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="./"><img src="assets/icon-192.png" alt="" width="28" height="28">Duomo</a>
+    <button class="lang" type="button" id="lang-toggle"><span data-l="ko">EN</span><span data-l="en">한국어</span></button>
+  </div>
+</header>
+<main class="wrap">
+  <h1><span data-l="ko">문제 신고 · 의견 보내기</span><span data-l="en">Report a bug · Send feedback</span></h1>
+  <p class="lead">
+    <span data-l="ko">버그나 바라는 점을 알려 주세요. 로그인 없이 보낼 수 있고, 적어 주신 내용은 Duomo를 고치는 데만 써요.</span>
+    <span data-l="en">Tell us about a bug or something you'd like. No sign-in needed; what you send is only used to improve Duomo.</span>
+  </p>
+  <div class="info" id="info" hidden></div>
+  <div class="frame"><iframe id="form" title="Duomo feedback form" loading="eager"></iframe></div>
+  <p class="alt">
+    <span data-l="ko">양식이 보이지 않으면 <a id="open" target="_blank" rel="noopener">새 창에서 열기</a></span>
+    <span data-l="en">Can't see the form? <a id="open-en" target="_blank" rel="noopener">Open it in a new tab</a></span>
+  </p>
+</main>
+<script>
+  // Google 설문지(Duomo 문제 신고 · 의견). 칸 번호는 설문의 '미리 채워진 링크'에서 읽었다. 설문 항목을 바꾸면 여기도 바꾼다
+  var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSdkAEHRf5kOAFS_VtBlxeaE4tZEi_Zw_k-CKiTg59d_Qu2sLw/viewform';
+  var ENTRY = { type: 2029620163, version: 240312042, device: 671206337, screen: 1212878873 };
+  var TYPES = { bug: '버그 · Bug', idea: '개선 요청 · Suggestion', other: '기타 · Other' };
+
+  // 앱이 붙여 보내는 값: v = 앱 버전, d = 기기·안드로이드, s = 화면, t = bug|idea|other
+  var q = new URLSearchParams(location.search);
+  var fields = { version: q.get('v'), device: q.get('d'), screen: q.get('s') };
+  var params = new URLSearchParams({ usp: 'pp_url' });
+  Object.keys(fields).forEach(function (k) { if (fields[k]) params.set('entry.' + ENTRY[k], fields[k].slice(0, 200)); });
+  if (TYPES[q.get('t')]) params.set('entry.' + ENTRY.type, TYPES[q.get('t')]);
+  var url = FORM + '?' + params.toString();
+  document.getElementById('form').src = url + '&embedded=true';
+  document.getElementById('open').href = url;
+  document.getElementById('open-en').href = url;
+
+  // 앱에서 열었으면 자동으로 채운 정보를 보여 준다
+  var info = document.getElementById('info');
+  [['version', '버전', 'Version'], ['device', '기기', 'Device'], ['screen', '화면', 'Screen']].forEach(function (f) {
+    if (!fields[f[0]]) return;
+    var chip = document.createElement('span'); chip.className = 'chip';
+    chip.innerHTML = '<span data-l="ko">' + f[1] + '</span><span data-l="en">' + f[2] + '</span> ';
+    var b = document.createElement('b'); b.textContent = fields[f[0]]; chip.appendChild(b);
+    info.appendChild(chip); info.hidden = false;
+  });
+
+  document.getElementById('lang-toggle').addEventListener('click', function () {
+    var next = document.documentElement.lang === 'ko' ? 'en' : 'ko';
+    try { localStorage.setItem('duomo-lang', next); } catch (e) {}
+    document.documentElement.lang = next;
+  });
+</script>
+</body>
+</html>
