@@ -164,7 +164,20 @@
   .update-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 12px; font-size: 14px; color: var(--muted); }
   .update-meta .ver { color: var(--text); font-weight: 700; background: var(--glass); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
   .update-meta .status { color: var(--accent-soft); font-weight: 600; }
-  .update h3 { font-size: clamp(22px, 3vw, 28px); letter-spacing: -.025em; margin: 0 0 14px; }
+  /* 아코디언: 접히면 제목 한 줄 + 날짜, 펼치면 세부 내용 */
+  .updates .center + details.update { margin-top: 28px; }
+  details.update { padding: 0; margin-top: 12px; border-radius: 22px; overflow: hidden; }
+  .update summary { display: flex; align-items: center; gap: 14px; padding: 18px clamp(18px, 3vw, 28px); cursor: pointer; list-style: none; }
+  .update summary::-webkit-details-marker { display: none; }
+  .update summary .title { flex: 1; min-width: 0; font-size: clamp(16px, 2.2vw, 20px); font-weight: 700; letter-spacing: -.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .update summary .date { flex: none; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .update summary::after { content: ""; flex: none; width: 8px; height: 8px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg) translateY(-3px); transition: transform .2s; }
+  .update[open] summary::after { transform: rotate(-135deg) translateX(-3px); }
+  .update[open] summary { border-bottom: 1px solid var(--line); }
+  .update[open] summary .title { white-space: normal; }
+  .update summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 22px; }
+  .update-body { padding: 18px clamp(18px, 3vw, 28px) clamp(20px, 3vw, 30px); }
+  @media (max-width: 520px) { .update summary { gap: 10px; } .update summary .date { font-size: 13px; } }
   .update ul { margin: 0; padding-left: 1.1em; color: #c7cbd8; }
   .update li { margin: 6px 0; }
   .update h4 { font-size: 17px; margin: 30px 0 6px; }
@@ -434,9 +447,35 @@
         <h2><span data-l="ko">테스터 의견으로<br>바뀌고 있어요.</span><span data-l="en">Changing with<br>your feedback.</span></h2>
       </div>
 
-      <article class="update" id="v1-0-5">
+      <details class="update" id="v1-0-6" open>
+        <summary><span class="title"><span data-l="ko">홈에서 바로 간격 조절, 둘러보기에서 독 위치 고르기</span><span data-l="en">Adjust spacing right on Home, pick the dock position in the tour</span></span><span class="date"><span data-l="ko">26년 10월 2일</span><span data-l="en">Oct 2, 2026</span></span></summary>
+        <div class="update-body">
+        <p class="update-meta"><span class="ver">1.0.6</span><span><span data-l="ko">2026년 10월 2일</span><span data-l="en">October 2, 2026</span></span><span class="status"><span data-l="ko">확인 중 · 곧 테스터에게 배포</span><span data-l="en">In final checks · rolling out to testers soon</span></span></p>
+        <ul data-l="ko">
+          <li>홈 편집 모드 왼쪽 위에 자 모양 버튼이 생겼어요. 누르면 아래에 조절 바가 뜨고, 아이콘 크기·줄 간격·앱 사이 간격·위 여백을 홈을 보면서 바로 바꿀 수 있어요.</li>
+          <li>조절 중인 자리를 색으로 표시해 어디가 바뀌는지 바로 보여요. '기본'을 누르면 그 값만 되돌아가요.</li>
+          <li>처음 둘러보기에서 독 위치(하단·오른쪽)를 고를 수 있어요. 고르면 미리보기가 바로 바뀌어요.</li>
+          <li>독에 앱이 많아 아이콘이 작아질 때 독 배경 높이도 같은 비율로 줄여, 위아래가 휑해 보이던 것을 고쳤어요.</li>
+          <li>접히지 않는 일반 폰은 세로 화면으로 고정해요. 눕혔을 때 배치가 깨지던 문제를 막았어요.</li>
+        </ul>
+        <ul data-l="en">
+          <li>Edit mode has a new ruler button at the top left. It opens an adjust bar so you can change icon size, row spacing, space between apps and the top margin while looking at Home.</li>
+          <li>The area you're adjusting is tinted, so you can see what changes. 'Default' resets just that value.</li>
+          <li>Pick the dock position (bottom or right) in the first-run tour; the preview updates right away.</li>
+          <li>When a full dock shrinks its icons, the dock background now shrinks with them instead of leaving tall empty padding.</li>
+          <li>Regular (non-folding) phones stay in portrait, which prevents a broken layout in landscape.</li>
+        </ul>
+        <div class="shots pair" style="margin-top:22px">
+          <figure><img src="assets/updates/v106-tune-unfolded.webp" width="1300" height="981" loading="lazy" alt=""><figcaption><span data-l="ko">편집 모드 조절 바 · 앱 사이 간격</span><span data-l="en">Adjust bar in edit mode · space between apps</span></figcaption></figure>
+          <figure><img src="assets/updates/v106-tour-dock.webp" width="461" height="1000" loading="lazy" alt=""><figcaption><span data-l="ko">둘러보기 · 독 위치</span><span data-l="en">Tour · dock position</span></figcaption></figure>
+        </div>
+        </div>
+      </details>
+
+      <details class="update" id="v1-0-5">
+        <summary><span class="title"><span data-l="ko">알림 숫자 배지, 사라지던 위젯 수정</span><span data-l="en">Notification count badges, disappearing widgets fixed</span></span><span class="date"><span data-l="ko">26년 10월 1일</span><span data-l="en">Oct 1, 2026</span></span></summary>
+        <div class="update-body">
         <p class="update-meta"><span class="ver">1.0.5</span><span><span data-l="ko">2026년 10월 1일</span><span data-l="en">October 1, 2026</span></span><span class="status"><span data-l="ko">테스터에게 배포됨</span><span data-l="en">Rolled out to testers</span></span></p>
-        <h3><span data-l="ko">알림 숫자 배지, 사라지던 위젯 수정</span><span data-l="en">Notification count badges, disappearing widgets fixed</span></h3>
         <ul data-l="ko">
           <li>앱 아이콘에 알림 숫자 배지를 보여 줘요. '알림 접근'을 허용하면 켜지고, 설정 › 제스처 및 검색에서 끌 수 있어요. 알림 내용은 읽거나 저장하지 않고 개수만 세요.</li>
           <li>위젯이 사라지고 교체하라는 안내만 남던 문제를 고쳤어요. 잠깐 정보를 못 읽어도 다시 불러와요.</li>
@@ -449,11 +488,13 @@
           <li>A widget that lost its connection can be re-added with one tap.</li>
           <li>Tidied up the first-run tour.</li>
         </ul>
-      </article>
+        </div>
+      </details>
 
-      <article class="update" id="v1-0-4">
+      <details class="update" id="v1-0-4">
+        <summary><span class="title"><span data-l="ko">접은 화면 · 펼친 화면 배치, 함께 또는 따로</span><span data-l="en">Folded and unfolded layouts, shared or separate</span></span><span class="date"><span data-l="ko">26년 10월 1일</span><span data-l="en">Oct 1, 2026</span></span></summary>
+        <div class="update-body">
         <p class="update-meta"><span class="ver">1.0.4</span><span><span data-l="ko">2026년 10월 1일</span><span data-l="en">October 1, 2026</span></span><span class="status"><span data-l="ko">테스터에게 배포됨</span><span data-l="en">Rolled out to testers</span></span></p>
-        <h3><span data-l="ko">접은 화면 · 펼친 화면 배치, 함께 또는 따로</span><span data-l="en">Folded and unfolded layouts, shared or separate</span></h3>
         <ul data-l="ko">
           <li>설정 › 홈 화면에서 앱 배치를 고를 수 있어요. 펼친 화면으로 맞추기, 접은 화면으로 맞추기, 화면마다 따로 쓰기 중에 골라요.</li>
           <li>따로 쓰면 홈 앱과 독을 화면마다 기억해요. 위젯·폴더·펼친 화면 전용 페이지는 함께 써요.</li>
@@ -470,11 +511,13 @@
           <figure><img src="assets/updates/v104-unfolded-bottom-dock.webp" width="1224" height="924" loading="lazy" alt=""><figcaption><span data-l="ko">펼친 화면 · 하단 독 (앱 7개)</span><span data-l="en">Unfolded · bottom dock (7 apps)</span></figcaption></figure>
           <figure><img src="assets/updates/v104-cover.webp" width="540" height="1260" loading="lazy" alt=""><figcaption><span data-l="ko">접은 화면</span><span data-l="en">Folded</span></figcaption></figure>
         </div>
-      </article>
+        </div>
+      </details>
 
-      <article class="update" id="v1-0-3">
+      <details class="update" id="v1-0-3">
+        <summary><span class="title"><span data-l="ko">펼친 화면 하단 독, 폴더에 앱 검색해서 넣기</span><span data-l="en">Bottom dock unfolded, search to add apps to folders</span></span><span class="date"><span data-l="ko">26년 10월 1일</span><span data-l="en">Oct 1, 2026</span></span></summary>
+        <div class="update-body">
         <p class="update-meta"><span class="ver">1.0.3</span><span><span data-l="ko">2026년 10월 1일</span><span data-l="en">October 1, 2026</span></span><span class="status"><span data-l="ko">테스터에게 배포됨</span><span data-l="en">Rolled out to testers</span></span></p>
-        <h3><span data-l="ko">펼친 화면 하단 독, 폴더에 앱 검색해서 넣기</span><span data-l="en">Bottom dock unfolded, search to add apps to folders</span></h3>
         <ul data-l="ko">
           <li>갤럭시 Z 폴드8 펼친 화면에 '하단 독 배치'를 추가했어요. 설정 › 도크에서 오른쪽 독과 하단 독 중 고를 수 있어요.</li>
           <li>폴더의 '앱 추가'에서 앱을 검색해 여러 개를 한 번에 넣을 수 있어요.</li>
@@ -489,11 +532,13 @@
           <figure><img src="assets/updates/fold8-dock-right.webp" width="1224" height="924" loading="lazy" alt=""><figcaption><span data-l="ko">오른쪽 독</span><span data-l="en">Side dock</span></figcaption></figure>
           <figure><img src="assets/updates/fold8-dock-bottom.webp" width="1224" height="924" loading="lazy" alt=""><figcaption><span data-l="ko">하단 독</span><span data-l="en">Bottom dock</span></figcaption></figure>
         </div>
-      </article>
+        </div>
+      </details>
 
-      <article class="update" id="v1-0-2">
+      <details class="update" id="v1-0-2">
+        <summary><span class="title"><span data-l="ko">펼친 화면 간격과 독을 다시 맞췄어요</span><span data-l="en">Reworked unfolded spacing and the dock</span></span><span class="date"><span data-l="ko">26년 10월 1일</span><span data-l="en">Oct 1, 2026</span></span></summary>
+        <div class="update-body">
         <p class="update-meta"><span class="ver">1.0.2</span><span><span data-l="ko">2026년 10월 1일</span><span data-l="en">October 1, 2026</span></span><span class="status"><span data-l="ko">테스터에게 배포됨</span><span data-l="en">Rolled out to testers</span></span></p>
-        <h3><span data-l="ko">펼친 화면 간격과 독을 다시 맞췄어요</span><span data-l="en">Reworked unfolded spacing and the dock</span></h3>
         <ul data-l="ko">
           <li>독에 앱을 더 넣으면 칸이 늘어나요. 커버는 최대 6개, 펼친 화면은 최대 7개까지 들어가요.</li>
           <li>갤럭시 Z 폴드8 펼친 화면: 앱 사이 간격을 넓히고, 두 페이지 사이와 아래쪽 빈 공간을 줄였어요.</li>
@@ -505,7 +550,8 @@
           <li>Refined the unfolded dock's icon size and spacing, plus a new 'Space between apps' setting.</li>
         </ul>
 
-      </article>
+        </div>
+      </details>
     </div>
   </section>
 </main>
@@ -607,6 +653,13 @@
     m.href = LINKS.play; m.target = '_blank'; m.rel = 'noopener';
     m.innerHTML = '<span data-l="ko">Google Play에서 받기</span><span data-l="en">Get it on Google Play</span>';
   }
+
+  // 업데이트 내역 아코디언: #v1-0-6 처럼 항목 주소로 들어오면 그 항목을 펼쳐 보여 준다
+  function openUpdateFromHash() {
+    var el = location.hash && document.getElementById(location.hash.slice(1));
+    if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView({ block: 'start' }); }
+  }
+  addEventListener('hashchange', openUpdateFromHash); openUpdateFromHash();
 
   var header = document.querySelector('header');
   addEventListener('scroll', function () { header.classList.toggle('scrolled', scrollY > 8); }, { passive: true });
