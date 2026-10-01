@@ -175,7 +175,9 @@
   .shots figcaption { font-size: 13px; color: var(--faint); margin-top: 8px; text-align: center; }
   .update .ask { margin: 18px 0 0; font-size: 15px; color: var(--muted); }
   .update .ask a { color: var(--accent-soft); }
-  @media (max-width: 700px) { .shots { grid-template-columns: 1fr; } }
+  /* 펼친 화면(가로) + 접은 화면(세로) 한 쌍: 높이를 맞춰 나란히 */
+  .shots.pair { grid-template-columns: 3.1fr 1fr; align-items: end; }
+  @media (max-width: 700px) { .shots { grid-template-columns: 1fr; } .shots.pair { grid-template-columns: 3.1fr 1fr; gap: 8px; } }
   .note { font-size: 14px; color: var(--faint); margin-top: 14px; }
 
   /* 베타 */
@@ -419,6 +421,10 @@
           <li>Unfolded bottom dock: icons match the side-dock size and rows are evenly spaced. It now works on Fold7 and other Folds too.</li>
           <li>Every dock app shows on the cover screen, and the clock rail is hidden in the unfolded App Library and search.</li>
         </ul>
+        <div class="shots pair" style="margin-top:22px">
+          <figure><img src="assets/updates/v104-unfolded-bottom-dock.webp" width="1224" height="924" loading="lazy" alt=""><figcaption><span data-l="ko">펼친 화면 · 하단 독 (앱 7개)</span><span data-l="en">Unfolded · bottom dock (7 apps)</span></figcaption></figure>
+          <figure><img src="assets/updates/v104-cover.webp" width="540" height="1260" loading="lazy" alt=""><figcaption><span data-l="ko">접은 화면</span><span data-l="en">Folded</span></figcaption></figure>
+        </div>
       </article>
 
       <article class="update" id="v1-0-3">
