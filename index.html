@@ -188,6 +188,16 @@
   .step-link { display: block; margin-top: 12px; font-size: 15px; font-weight: 600; color: var(--accent-soft); }
   .step-link span { color: inherit; font-size: inherit; }
   @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+  /* 참여 단계: 지금 할 단계는 파란 테두리, 끝낸 단계는 초록 체크(이 브라우저에 기억) */
+  .step.current { border-color: rgba(10, 132, 255, .6); box-shadow: 0 0 0 1px rgba(10, 132, 255, .35); }
+  .step.done::before { content: "✓"; background: rgba(48, 209, 88, .18); color: #30d158; }
+  .step.done { opacity: .72; }
+  .btn.next { animation: nextGlow 2.2s ease-out infinite; }
+  @keyframes nextGlow { 0% { box-shadow: 0 0 0 0 rgba(10, 132, 255, .55); } 70% { box-shadow: 0 0 0 12px rgba(10, 132, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(10, 132, 255, 0); } }
+  @media (prefers-reduced-motion: reduce) { .btn.next { animation: none; } }
+  .account-note { font-size: 14px; color: var(--muted); text-align: center; margin: 14px auto 0; max-width: 36em; }
+  .account-note b { color: var(--text); font-weight: 600; }
+  .restart { display: block; margin: 8px auto 0; font-size: 14px; color: var(--faint); text-decoration: underline; background: none; border: 0; cursor: pointer; font-family: inherit; }
   .center { text-align: center; }
 
   footer { margin-top: clamp(100px, 12vw, 160px); border-top: 1px solid var(--line); padding: 36px 0 48px; font-size: 14px; color: var(--faint); }
@@ -372,14 +382,16 @@
         <li><span data-l="ko">개발자와 직접 피드백 가능</span><span data-l="en">Direct feedback with the developer</span></li>
       </ul>
       <div class="steps">
-        <div class="step"><strong><span data-l="ko">테스터 그룹 가입</span><span data-l="en">Join the tester group</span></strong><span data-l="ko">Play 스토어에서 쓰는 Google 계정으로 가입해요.</span><span data-l="en">Use the Google account you use on Play.</span><a class="step-link" data-link="group" data-goatcounter-click="step-group" hidden><span data-l="ko">그룹 가입하기 →</span><span data-l="en">Join the group →</span></a></div>
-        <div class="step"><strong><span data-l="ko">테스터 되기</span><span data-l="en">Become a tester</span></strong><span data-l="ko">참여 링크에서 "테스터 되기"를 눌러요. 가입 직후엔 반영까지 몇 분 걸릴 수 있어요.</span><span data-l="en">Open the opt-in link and tap "Become a tester". It can take a few minutes after joining.</span><a class="step-link" data-link="beta" data-goatcounter-click="step-optin" hidden><span data-l="ko">테스터 되기 →</span><span data-l="en">Become a tester →</span></a></div>
-        <div class="step"><strong><span data-l="ko">설치하고 14일</span><span data-l="en">Install, keep 14 days</span></strong><span data-l="ko">Play 스토어에서 설치하고, 지우지 말고 가끔 써 주세요.</span><span data-l="en">Install from Play and keep it for 14 days.</span></div>
+        <div class="step" data-step="1"><strong><span data-l="ko">테스터 그룹 가입</span><span data-l="en">Join the tester group</span></strong><span data-l="ko">Play 스토어에서 쓰는 Google 계정으로 가입해요.</span><span data-l="en">Use the Google account you use on Play.</span><a class="step-link" data-link="group" data-goatcounter-click="step-group" hidden><span data-l="ko">그룹 가입하기 →</span><span data-l="en">Join the group →</span></a></div>
+        <div class="step" data-step="2"><strong><span data-l="ko">테스터 되기</span><span data-l="en">Become a tester</span></strong><span data-l="ko">참여 링크에서 "테스터 되기"를 눌러요. 가입 직후엔 반영까지 몇 분 걸릴 수 있어요.</span><span data-l="en">Open the opt-in link and tap "Become a tester". It can take a few minutes after joining.</span><a class="step-link" data-link="beta" data-goatcounter-click="step-optin" hidden><span data-l="ko">테스터 되기 →</span><span data-l="en">Become a tester →</span></a></div>
+        <div class="step" data-step="3"><strong><span data-l="ko">설치하고 14일</span><span data-l="en">Install, keep 14 days</span></strong><span data-l="ko">Play 스토어에서 설치하고, 지우지 말고 가끔 써 주세요.</span><span data-l="en">Install from Play and keep it for 14 days.</span></div>
       </div>
       <div class="ctas" style="margin-top:0">
         <a class="btn primary" id="cta-beta" data-goatcounter-click="cta-beta-group" aria-disabled="true"><span data-l="ko">모집 준비 중이에요</span><span data-l="en">Opening soon</span></a>
         <a class="btn ghost" href="feedback.html" data-goatcounter-click="feedback-beta"><span data-l="ko">문제 신고 · 의견 보내기</span><span data-l="en">Report a bug · Feedback</span></a>
       </div>
+      <p class="account-note"><span data-l="ko">그룹 가입, 테스터 되기, 설치 모두 <b>Play 스토어에 쓰는 같은 Google 계정</b>이어야 해요. 버튼을 누르고 이 페이지로 돌아오면 다음 단계가 이어져요. 휴대폰에서 막히면 PC 브라우저에서 1·2단계를 해도 괜찮아요.</span><span data-l="en">Joining the group, becoming a tester and installing must all use <b>the same Google account as your Play Store</b>. Come back to this page after each step and the next one will be ready. If your phone gets stuck, do steps 1–2 in a desktop browser.</span></p>
+      <button class="restart" id="beta-restart" type="button" hidden><span data-l="ko">처음부터 다시 (1단계 그룹 가입)</span><span data-l="en">Start over (step 1: join the group)</span></button>
       <p class="note center"><span data-l="ko">써 보다가 이상한 점이나 바라는 점이 있으면 앱의 설정 › 도움말 › "문제 신고 · 의견 보내기"로 알려 주세요.</span><span data-l="en">Found something off or have an idea? Use Settings › Help › "Report a bug · Send feedback" in the app.</span></p>
     </div>
   </section>
@@ -435,6 +447,8 @@
   var LINKS = {
     group: 'https://groups.google.com/g/duomo-testers',
     beta: 'https://play.google.com/apps/testing/com.bgiseok.crease',
+    // 테스터가 된 뒤 설치하는 스토어 페이지(테스터가 아니면 '찾을 수 없음')
+    store: 'https://play.google.com/store/apps/details?id=com.bgiseok.crease',
     play: ''
   };
 
@@ -462,10 +476,43 @@
     if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.hidden = false; }
   });
   if (LINKS.group) {
-    // 첫 단계(그룹 가입)부터 시작하게 한다. 가입한 뒤 2단계 링크로 테스터 되기
-    var b = document.getElementById('cta-beta');
-    b.href = LINKS.group; b.target = '_blank'; b.rel = 'noopener'; b.removeAttribute('aria-disabled');
-    b.innerHTML = '<span data-l="ko">클로즈드 베타 참여하기</span><span data-l="en">Join the Closed Beta</span>';
+    // 참여는 구글 쪽에서 두 단계로 나뉜다(그룹 가입 → 테스터 되기). 한 버튼이 단계를 따라가게 한다:
+    // 누르면 새 탭으로 열고, 이 탭으로 돌아오면 다음 단계로 바뀐다. 단계는 이 브라우저에만 기억(localStorage)
+    var STEP_KEY = 'duomo-beta-step';
+    var STAGES = {
+      1: { href: LINKS.group, ko: '클로즈드 베타 참여하기', en: 'Join the Closed Beta', ev: 'cta-beta-group' },
+      2: { href: LINKS.beta, ko: '2단계: 테스터 되기', en: 'Step 2: Become a tester', ev: 'cta-beta-optin' },
+      3: { href: LINKS.store, ko: '3단계: Play 스토어에서 설치', en: 'Step 3: Install from Google Play', ev: 'cta-beta-install' }
+    };
+    var cta = document.getElementById('cta-beta'), restart = document.getElementById('beta-restart'), pending = 0;
+    var readStep = function () { var n = 1; try { n = parseInt(localStorage.getItem(STEP_KEY), 10) || 1; } catch (e) {} return Math.min(3, Math.max(1, n)); };
+    var showStep = function (n) {
+      var st = STAGES[n];
+      cta.href = st.href; cta.target = '_blank'; cta.rel = 'noopener'; cta.removeAttribute('aria-disabled');
+      cta.setAttribute('data-goatcounter-click', st.ev);
+      cta.innerHTML = '<span data-l="ko">' + st.ko + '</span><span data-l="en">' + st.en + '</span>';
+      cta.classList.toggle('next', n > 1);
+      document.querySelectorAll('.step[data-step]').forEach(function (el) {
+        var k = +el.dataset.step;
+        el.classList.toggle('done', k < n); el.classList.toggle('current', k === n);
+      });
+      restart.hidden = n === 1;
+    };
+    var setStep = function (n) { try { localStorage.setItem(STEP_KEY, String(n)); } catch (e) {} showStep(n); };
+    // 단계 버튼이나 단계 카드 안 링크를 누르면, 돌아왔을 때 다음 단계로 넘긴다
+    cta.addEventListener('click', function () { pending = readStep(); });
+    document.querySelectorAll('.step-link[data-link]').forEach(function (a) {
+      a.addEventListener('click', function () { pending = a.dataset.link === 'group' ? 1 : 2; });
+    });
+    var onReturn = function () {
+      if (!pending || document.visibilityState !== 'visible') return;
+      var next = Math.min(3, pending + 1); pending = 0;
+      if (next > readStep()) setStep(next);
+    };
+    document.addEventListener('visibilitychange', onReturn);
+    addEventListener('focus', onReturn);
+    restart.addEventListener('click', function () { setStep(1); });
+    showStep(readStep());
   }
   if (LINKS.play) {
     var m = document.getElementById('cta-main');
