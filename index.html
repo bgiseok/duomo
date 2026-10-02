@@ -190,6 +190,15 @@
   .update .ask a { color: var(--accent-soft); }
   /* 펼친 화면(가로) + 접은 화면(세로) 한 쌍: 높이를 맞춰 나란히 */
   .shots.pair { grid-template-columns: 3.1fr 1fr; align-items: end; }
+  .faq-group { max-width: 920px; margin: 34px 0 0; font-size: 15px; font-weight: 700; color: var(--muted); letter-spacing: .02em; }
+  .faq-group + details.update { margin-top: 12px; }
+  .update.faq summary .title { white-space: normal; font-size: clamp(15px, 2vw, 18px); }
+  .update.faq .update-body { padding-top: 14px; }
+  .update.faq p { margin: 0; color: #c7cbd8; }
+  .update.faq p a { color: var(--accent-soft); text-decoration: underline; }
+  .faq-shot { max-width: 280px; margin: 18px auto 0; }
+  .faq-shot img { display: block; width: 100%; height: auto; border-radius: 22px; border: 1px solid var(--line); background: #000; }
+  .faq-shot figcaption { font-size: 13px; color: var(--faint); margin-top: 8px; text-align: center; }
   @media (max-width: 700px) { .shots { grid-template-columns: 1fr; } .shots.pair { grid-template-columns: 3.1fr 1fr; gap: 8px; } }
   .note { font-size: 14px; color: var(--faint); margin-top: 14px; }
 
@@ -254,6 +263,7 @@
       <a href="#story"><span data-l="ko">왜 베타?</span><span data-l="en">Why beta</span></a>
       <a href="#beta"><span data-l="ko">베타 테스트</span><span data-l="en">Beta</span></a>
       <a href="#updates"><span data-l="ko">업데이트</span><span data-l="en">Updates</span></a>
+      <a href="#faq"><span data-l="ko">FAQ</span><span data-l="en">FAQ</span></a>
       <button class="lang" type="button" id="lang-toggle" aria-label="Language"><span data-l="ko">EN</span><span data-l="en">한국어</span></button>
     </nav>
   </div>
@@ -607,6 +617,144 @@
           <li>Refined the unfolded dock's icon size and spacing, plus a new 'Space between apps' setting.</li>
         </ul>
 
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap updates reveal">
+      <div class="center">
+        <p class="kicker"><span data-l="ko">자주 묻는 질문</span><span data-l="en">FAQ</span></p>
+        <h2><span data-l="ko">많이 물어보신 것들.</span><span data-l="en">Things people ask.</span></h2>
+      </div>
+      <h3 class="faq-group"><span data-l="ko">설치 · 업데이트</span><span data-l="en">Install & updates</span></h3>
+      <details class="update faq" id="faq-search">
+        <summary><span class="title"><span data-l="ko">Play 스토어에서 검색해도 안 나와요.</span><span data-l="en">I can't find it in Play Store search.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">테스트 중인 앱은 검색에 나오지 않아요. 이 페이지의 설치 버튼(스토어 링크)으로 들어가거나, Play 스토어 › 프로필 › <b>앱 및 기기 관리</b>에서 업데이트해 주세요.</span><span data-l="en">Apps in testing don't appear in search. Use the install button (store link) on this page, or update from Play Store › profile › <b>Manage apps &amp; device</b>.</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-auto-update">
+        <summary><span class="title"><span data-l="ko">업데이트는 자동으로 되나요?</span><span data-l="en">Do updates install automatically?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">Play 스토어 자동 업데이트를 켜 두었다면 자동으로 받아요. 바로 받고 싶으면 앱 및 기기 관리에서 직접 업데이트하면 돼요.</span><span data-l="en">Yes, if auto-update is on in the Play Store. To get one right away, update from Manage apps &amp; device.</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-whats-new">
+        <summary><span class="title"><span data-l="ko">뭐가 바뀌었는지 어디서 보나요?</span><span data-l="en">Where can I see what changed?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">앱의 설정 › <b>새로운 기능</b>에서 볼 수 있고, 업데이트 직후에는 홈에 안내가 한 번 떠요(1.0.8부터). 이 페이지의 <a href="#updates">업데이트 내역</a>에도 있어요.</span><span data-l="en">In the app under Settings › <b>What's new</b>, plus a one-time note on Home right after an update (from 1.0.8). It's also in <a href="#updates">What's new</a> on this page.</span></p>
+        </div>
+      </details>
+      <h3 class="faq-group"><span data-l="ko">위젯</span><span data-l="en">Widgets</span></h3>
+      <details class="update faq" id="faq-add-widget">
+        <summary><span class="title"><span data-l="ko">위젯은 어떻게 넣나요?</span><span data-l="en">How do I add a widget?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">홈의 빈 곳을 길게 눌러 편집 모드를 열고, 왼쪽 위 <b>+</b>를 눌러 위젯을 골라요. 자리를 확인하고 <b>추가</b>를 누르면 끝이에요.</span><span data-l="en">Touch and hold an empty spot on Home to open edit mode, tap <b>+</b> at the top left and pick a widget. Check the position and tap <b>Add</b>.</span></p>
+          <figure class="faq-shot"><img src="assets/faq/faq-add-widget.webp" width="360" height="840" loading="lazy" alt=""><figcaption><span data-l="ko">위젯 넣기</span><span data-l="en">Adding a widget</span></figcaption></figure>
+        </div>
+      </details>
+      <details class="update faq" id="faq-resize-widget">
+        <summary><span class="title"><span data-l="ko">위젯 크기는 어떻게 바꾸나요?</span><span data-l="en">How do I resize a widget?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">위젯을 길게 눌렀다 떼면 메뉴가 나와요. <b>크기 및 위치</b>에서 작게·중간·크게·전체를 고르거나, <b>홈 화면에서 크기 조절</b>을 눌러 모서리를 끌어 주세요.</span><span data-l="en">Touch and hold the widget, then release to open its menu. In <b>Size &amp; position</b>, pick a preset size or tap <b>Resize on Home Screen</b> and drag the corner.</span></p>
+          <figure class="faq-shot"><img src="assets/faq/faq-resize-widget.webp" width="360" height="840" loading="lazy" alt=""><figcaption><span data-l="ko">위젯 크기 바꾸기</span><span data-l="en">Resizing a widget</span></figcaption></figure>
+        </div>
+      </details>
+      <details class="update faq" id="faq-photo-widget">
+        <summary><span class="title"><span data-l="ko">사진 위젯에 여러 장을 넣어 자동으로 바뀌게 할 수 있나요?</span><span data-l="en">Can the photo widget rotate through several photos?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">돼요(1.0.8부터). 위젯을 눌러 사진을 여러 장 고르고, 다시 눌러 주기(1시간마다 · 하루마다 · 홈에 올 때마다)를 정하면 자동으로 바뀌어요. 순서는 고른 순서대로예요.</span><span data-l="en">Yes (from 1.0.8). Tap the widget and pick several photos, then tap it again to choose how often they change: every hour, every day, or each time you come home. They rotate in the order you picked.</span></p>
+          <figure class="faq-shot"><img src="assets/faq/faq-photo-widget.webp" width="360" height="840" loading="lazy" alt=""><figcaption><span data-l="ko">사진 여러 장 · 자동 변경</span><span data-l="en">Several photos, auto change</span></figcaption></figure>
+        </div>
+      </details>
+      <details class="update faq" id="faq-widget-reconnect">
+        <summary><span class="title"><span data-l="ko">업데이트했더니 위젯이 전부 '다시 연결'로 바뀌었어요.</span><span data-l="en">After an update, all my widgets say 'Reconnect'.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">버그였고 1.0.8에서 고쳤어요. 1.0.8을 받는 순간에는 한 번 더 생길 수 있는데, 그 자리를 눌러 다시 연결하면 돼요. 이후 업데이트부터는 생기지 않아요.</span><span data-l="en">That was a bug, fixed in 1.0.8. It may happen once more while you take the 1.0.8 update; tap the spot to reconnect. It shouldn't happen on later updates.</span></p>
+        </div>
+      </details>
+      <h3 class="faq-group"><span data-l="ko">홈 화면 · 독</span><span data-l="en">Home screen & dock</span></h3>
+      <details class="update faq" id="faq-tune">
+        <summary><span class="title"><span data-l="ko">간격이나 아이콘 크기를 보면서 조절하고 싶어요.</span><span data-l="en">I want to adjust spacing and icon size while looking at Home.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">편집 모드 왼쪽 위의 <b>자 모양 버튼</b>을 누르면 홈을 보면서 아이콘 크기, 줄 간격, 위 여백 등을 바로 바꿀 수 있어요. 맞춘 값은 설정 › 홈 화면 › <b>내 배치</b>에 3개까지 저장돼요. (배치에 따라 조절할 수 있는 항목이 달라요.)</span><span data-l="en">In edit mode, tap the <b>ruler button</b> at the top left to change icon size, row spacing, top margin and more right on Home. Save up to three setups under Settings › Home Screen › <b>My layouts</b>. (Available items depend on your layout.)</span></p>
+          <figure class="faq-shot"><img src="assets/faq/faq-tune.webp" width="360" height="840" loading="lazy" alt=""><figcaption><span data-l="ko">편집 모드에서 간격 · 크기 조절</span><span data-l="en">Adjusting size and spacing in edit mode</span></figcaption></figure>
+        </div>
+      </details>
+      <details class="update faq" id="faq-dock">
+        <summary><span class="title"><span data-l="ko">독을 왼쪽이나 아래에 둘 수 있나요? 독에 폴더는요?</span><span data-l="en">Can I move the dock to the left or bottom? Folders in the dock?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">설정 › 홈 화면 › 도크에서 위치를 고를 수 있어요. 폴더를 독으로 끌어다 놓으면 독에도 폴더를 둘 수 있어요.</span><span data-l="en">Choose the position under Settings › Home Screen › Dock. Drag a folder onto the dock to keep it there.</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-layout-sync">
+        <summary><span class="title"><span data-l="ko">접은 화면에서 정리한 배치가 펼친 화면에서 정리한 뒤 바뀌었어요.</span><span data-l="en">My cover-screen layout changed after I arranged the unfolded screen.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">기본 설정은 접은 화면과 펼친 화면이 같은 배치를 함께 쓰는 방식이에요. 따로 쓰려면 설정 › 홈 화면 › <b>화면마다 따로 쓰기</b>를 골라 주세요. (위젯과 폴더는 따로 쓰기에서도 함께 써요.)</span><span data-l="en">By default the cover and unfolded screens share one layout. To keep them apart, choose <b>Keep separate layouts</b> under Settings › Home Screen. (Widgets and folders are still shared.)</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-hide">
+        <summary><span class="title"><span data-l="ko">앱 숨기기를 눌러도 독에 있는 앱이 안 사라져요.</span><span data-l="en">Hiding an app doesn't remove it from the dock.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">1.0.8에서 고쳤어요. 이미 남아 있는 앱은 숨기기 해제 후 다시 숨기면 빠져요.</span><span data-l="en">Fixed in 1.0.8. For an app that's already stuck, unhide it and hide it again.</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-pages">
+        <summary><span class="title"><span data-l="ko">페이지 순서를 바꾸거나 지우려면요?</span><span data-l="en">How do I reorder or delete pages?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">편집 모드에서 아래쪽 페이지 점을 누르면 페이지 편집 화면이 열려요. 순서 바꾸기와 삭제가 되고, 새 페이지 추가는 다음 업데이트에 들어가요.</span><span data-l="en">In edit mode, tap the page dots at the bottom to open page editing. You can reorder and delete pages; adding a new page arrives in the next update.</span></p>
+        </div>
+      </details>
+      <h3 class="faq-group"><span data-l="ko">제스처 · 상태 표시</span><span data-l="en">Gestures & status</span></h3>
+      <details class="update faq" id="faq-gestures">
+        <summary><span class="title"><span data-l="ko">위로 쓸어 검색이나 '모든 앱' 페이지를 끄고 싶어요.</span><span data-l="en">I want to turn off swipe-up search or the All Apps page.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">설정 › 제스처 및 검색에서 둘 다 켜고 끌 수 있어요. ('모든 앱'은 1.0.8까지 '앱 보관함'이라는 이름이에요.)</span><span data-l="en">Both can be turned on or off under Settings › Gestures &amp; Search. (All Apps is called 'App Library' up to 1.0.8.)</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-shade">
+        <summary><span class="title"><span data-l="ko">아래로 쓸어내릴 때 알림과 빠른 설정이 나뉘어 열려요.</span><span data-l="en">Swiping down opens notifications and Quick Settings separately.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">설정 › 제스처 및 검색의 <b>오른쪽에서 쓸어내리면 빠른 설정</b>을 끄면 어디서 쓸어도 같은 패널이 열려요. 삼성 빠른 설정을 '함께 보기'로 쓴다면 끄는 걸 권해요.</span><span data-l="en">Turn off <b>Swipe down on the right for Quick Settings</b> under Settings › Gestures &amp; Search and the same panel opens wherever you swipe. Recommended if your Samsung quick panel is set to 'Together'.</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-status">
+        <summary><span class="title"><span data-l="ko">상태 표시를 껐는데도 시계와 와이파이가 계속 보여요.</span><span data-l="en">I turned off the status display but still see the clock and Wi-Fi.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">하단 독 배치에서는 스위치가 적용되지 않는 문제가 있었어요. 다음 업데이트에서 끄면 시스템 상태바가 나오도록 고쳤어요.</span><span data-l="en">With the bottom dock the switch had no effect. From the next update, turning it off shows the system status bar instead.</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-5g">
+        <summary><span class="title"><span data-l="ko">5G 표시가 되나요?</span><span data-l="en">Does it show 5G?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">1.0.8부터 와이파이가 아닐 때 5G·LTE가 표시돼요.</span><span data-l="en">From 1.0.8 it shows 5G/LTE when you're not on Wi-Fi.</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-recents">
+        <summary><span class="title"><span data-l="ko">최근 앱 제스처를 할 때 원래 홈 화면이 잠깐 보여요.</span><span data-l="en">The stock home screen flashes during the recents gesture.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">삼성 시스템의 제약이라 런처 쪽에서 고칠 수 없어요. 양해 부탁드려요.</span><span data-l="en">That's a Samsung system limitation a launcher can't change. Sorry about that.</span></p>
+        </div>
+      </details>
+      <h3 class="faq-group"><span data-l="ko">기타</span><span data-l="en">Other</span></h3>
+      <details class="update faq" id="faq-live-icons">
+        <summary><span class="title"><span data-l="ko">시계·캘린더 아이콘이 움직이지 않아요.</span><span data-l="en">The clock and calendar icons don't move.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">살아 있는 시계·캘린더 아이콘은 Aura 아이콘이 켜져 있을 때만 동작해요. 설정 › 배경화면 및 모양에서 켜 주세요.</span><span data-l="en">Live clock and calendar icons work only with Aura icons on. Turn them on under Settings › Wallpaper &amp; Appearance.</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-edge">
+        <summary><span class="title"><span data-l="ko">화면 끝으로 끌면 페이지가 넘어가게 해 주세요.</span><span data-l="en">Please let me drag to the screen edge to change pages.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">지금은 앱을 끄는 동안 위쪽에 나오는 페이지 숫자와 +에 놓는 방식으로 옮겨요. 화면 끝 넘기기는 당분간 넣지 않기로 했어요.</span><span data-l="en">For now, drop the app on the page numbers or + that appear at the top while dragging. Edge paging isn't planned for the time being.</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-report">
+        <summary><span class="title"><span data-l="ko">버그나 의견은 어디로 보내나요?</span><span data-l="en">Where do I send bugs or feedback?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">앱의 설정 › 도움말 › <b>문제 신고 · 의견 보내기</b>로 보내 주시면 기기 정보가 같이 와서 확인이 빨라요. <a href="feedback.html">이 페이지</a>에서도 보낼 수 있어요.</span><span data-l="en">Use Settings › Help › <b>Report a bug · Feedback</b> in the app; it includes your device details so I can check faster. You can also send it from <a href="feedback.html">this page</a>.</span></p>
         </div>
       </details>
     </div>
