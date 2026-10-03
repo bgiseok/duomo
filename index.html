@@ -190,6 +190,10 @@
   .update .ask a { color: var(--accent-soft); }
   /* 펼친 화면(가로) + 접은 화면(세로) 한 쌍: 높이를 맞춰 나란히 */
   .shots.pair { grid-template-columns: 3.1fr 1fr; align-items: end; }
+  .older-updates { margin-top: 14px; }
+  .older-updates > summary { list-style: none; cursor: pointer; text-align: center; padding: 14px; font-size: 15px; font-weight: 600; color: var(--accent-soft); }
+  .older-updates > summary::-webkit-details-marker { display: none; }
+  .older-updates[open] > summary { color: var(--muted); }
   .faq-group { max-width: 920px; margin: 34px 0 0; font-size: 15px; font-weight: 700; color: var(--muted); letter-spacing: .02em; }
   .faq-group + details.update { margin-top: 12px; }
   .update.faq summary .title { white-space: normal; font-size: clamp(15px, 2vw, 18px); }
@@ -552,6 +556,8 @@
         </div>
       </details>
 
+      <details class="older-updates">
+        <summary><span data-l="ko">이전 업데이트 보기 (1.0.2 ~ 1.0.7)</span><span data-l="en">Earlier updates (1.0.2 – 1.0.7)</span></summary>
       <details class="update" id="v1-0-7">
         <summary><span class="title"><span data-l="ko">독 폴더 · 왼쪽 독, 모든 앱 켜고 끄기</span><span data-l="en">Dock folders, left dock, the All Apps page on or off</span></span><span class="date"><span data-l="ko">26년 10월 2일</span><span data-l="en">Oct 2, 2026</span></span></summary>
         <div class="update-body">
@@ -581,7 +587,7 @@
         </div>
         </div>
       </details>
-      <details class="update" id="v1-0-6">
+        <details class="update" id="v1-0-6">
         <summary><span class="title"><span data-l="ko">홈에서 바로 간격 조절, 둘러보기에서 독 위치 고르기</span><span data-l="en">Adjust spacing right on Home, pick the dock position in the tour</span></span><span class="date"><span data-l="ko">26년 10월 2일</span><span data-l="en">Oct 2, 2026</span></span></summary>
         <div class="update-body">
         <p class="update-meta"><span class="ver">1.0.6</span><span><span data-l="ko">2026년 10월 2일</span><span data-l="en">October 2, 2026</span></span><span class="status"><span data-l="ko">테스터에게 배포됨</span><span data-l="en">Rolled out to testers</span></span></p>
@@ -608,7 +614,7 @@
         </div>
       </details>
 
-      <details class="update" id="v1-0-5">
+        <details class="update" id="v1-0-5">
         <summary><span class="title"><span data-l="ko">알림 숫자 배지, 사라지던 위젯 수정</span><span data-l="en">Notification count badges, disappearing widgets fixed</span></span><span class="date"><span data-l="ko">26년 10월 1일</span><span data-l="en">Oct 1, 2026</span></span></summary>
         <div class="update-body">
         <p class="update-meta"><span class="ver">1.0.5</span><span><span data-l="ko">2026년 10월 1일</span><span data-l="en">October 1, 2026</span></span><span class="status"><span data-l="ko">테스터에게 배포됨</span><span data-l="en">Rolled out to testers</span></span></p>
@@ -627,7 +633,7 @@
         </div>
       </details>
 
-      <details class="update" id="v1-0-4">
+        <details class="update" id="v1-0-4">
         <summary><span class="title"><span data-l="ko">접은 화면 · 펼친 화면 배치, 함께 또는 따로</span><span data-l="en">Folded and unfolded layouts, shared or separate</span></span><span class="date"><span data-l="ko">26년 10월 1일</span><span data-l="en">Oct 1, 2026</span></span></summary>
         <div class="update-body">
         <p class="update-meta"><span class="ver">1.0.4</span><span><span data-l="ko">2026년 10월 1일</span><span data-l="en">October 1, 2026</span></span><span class="status"><span data-l="ko">테스터에게 배포됨</span><span data-l="en">Rolled out to testers</span></span></p>
@@ -650,7 +656,7 @@
         </div>
       </details>
 
-      <details class="update" id="v1-0-3">
+        <details class="update" id="v1-0-3">
         <summary><span class="title"><span data-l="ko">펼친 화면 하단 독, 폴더에 앱 검색해서 넣기</span><span data-l="en">Bottom dock unfolded, search to add apps to folders</span></span><span class="date"><span data-l="ko">26년 10월 1일</span><span data-l="en">Oct 1, 2026</span></span></summary>
         <div class="update-body">
         <p class="update-meta"><span class="ver">1.0.3</span><span><span data-l="ko">2026년 10월 1일</span><span data-l="en">October 1, 2026</span></span><span class="status"><span data-l="ko">테스터에게 배포됨</span><span data-l="en">Rolled out to testers</span></span></p>
@@ -671,7 +677,7 @@
         </div>
       </details>
 
-      <details class="update" id="v1-0-2">
+        <details class="update" id="v1-0-2">
         <summary><span class="title"><span data-l="ko">펼친 화면 간격과 독을 다시 맞췄어요</span><span data-l="en">Reworked unfolded spacing and the dock</span></span><span class="date"><span data-l="ko">26년 10월 1일</span><span data-l="en">Oct 1, 2026</span></span></summary>
         <div class="update-body">
         <p class="update-meta"><span class="ver">1.0.2</span><span><span data-l="ko">2026년 10월 1일</span><span data-l="en">October 1, 2026</span></span><span class="status"><span data-l="ko">테스터에게 배포됨</span><span data-l="en">Rolled out to testers</span></span></p>
@@ -687,6 +693,7 @@
         </ul>
 
         </div>
+      </details>
       </details>
     </div>
   </section>
@@ -728,7 +735,7 @@
       <details class="update faq" id="faq-resize-widget">
         <summary><span class="title"><span data-l="ko">위젯 크기는 어떻게 바꾸나요?</span><span data-l="en">How do I resize a widget?</span></span></summary>
         <div class="update-body">
-          <p><span data-l="ko">위젯을 길게 눌렀다 떼면 메뉴가 나와요. <b>크기 및 위치</b>에서 작게·중간·크게·전체를 고르거나, <b>홈 화면에서 크기 조절</b>을 눌러 모서리를 끌어 주세요.</span><span data-l="en">Touch and hold the widget, then release to open its menu. In <b>Size &amp; position</b>, pick a preset size or tap <b>Resize on Home Screen</b> and drag the corner.</span></p>
+          <p><span data-l="ko">위젯을 길게 눌렀다 떼면 메뉴가 나와요. <b>크기 및 위치</b>에서 작게·중간·크게·전체를 고르거나, <b>홈 화면에서 크기 조절</b>을 눌러 모서리를 끌어 주세요. 1×1 위젯은 1.0.10부터 앱 아이콘과 같은 크기로 나와요.</span><span data-l="en">Touch and hold the widget, then release to open its menu. In <b>Size &amp; position</b>, pick a preset size or tap <b>Resize on Home Screen</b> and drag the corner. From 1.0.10, 1×1 widgets are drawn at app icon size.</span></p>
           <figure class="faq-shot"><img src="assets/faq/faq-resize-widget.webp" width="360" height="840" loading="lazy" alt=""><figcaption><span data-l="ko">위젯 크기 바꾸기</span><span data-l="en">Resizing a widget</span></figcaption></figure>
         </div>
       </details>
@@ -737,6 +744,12 @@
         <div class="update-body">
           <p><span data-l="ko">돼요(1.0.8부터). 위젯을 눌러 사진을 여러 장 고르고, 다시 눌러 주기(1시간마다 · 하루마다 · 홈에 올 때마다)를 정하면 자동으로 바뀌어요. 순서는 고른 순서대로예요.</span><span data-l="en">Yes (from 1.0.8). Tap the widget and pick several photos, then tap it again to choose how often they change: every hour, every day, or each time you come home. They rotate in the order you picked.</span></p>
           <figure class="faq-shot"><img src="assets/faq/faq-photo-widget.webp" width="360" height="840" loading="lazy" alt=""><figcaption><span data-l="ko">사진 여러 장 · 자동 변경</span><span data-l="en">Several photos, auto change</span></figcaption></figure>
+        </div>
+      </details>
+      <details class="update faq" id="faq-widget-missing">
+        <summary><span class="title"><span data-l="ko">찾는 위젯이 목록에 없어요. (예: 버즈 위젯)</span><span data-l="en">A widget I want isn't in the list (e.g. the Buds widget).</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">1.0.10부터 위젯 검색에 한글로 써도 영어 이름 위젯이 함께 나와요(예: 버즈 → Buds). Duomo는 안드로이드가 주는 위젯 목록을 걸러 내지 않아서, 그래도 안 보이면 그 앱(주로 삼성 기본 앱)이 다른 런처에는 위젯을 내주지 않는 경우예요.</span><span data-l="en">From 1.0.10, searching in Korean also finds widgets with English names (e.g. 버즈 → Buds). Duomo doesn't filter the widget list Android provides, so if it still isn't there, that app (often a Samsung app) doesn't offer the widget to other launchers.</span></p>
         </div>
       </details>
       <details class="update faq" id="faq-widget-reconnect">
@@ -756,7 +769,7 @@
       <details class="update faq" id="faq-dock">
         <summary><span class="title"><span data-l="ko">독을 왼쪽이나 아래에 둘 수 있나요? 독에 폴더는요?</span><span data-l="en">Can I move the dock to the left or bottom? Folders in the dock?</span></span></summary>
         <div class="update-body">
-          <p><span data-l="ko">설정 › 홈 화면 › 도크에서 위치를 고를 수 있어요. 폴더를 독으로 끌어다 놓으면 독에도 폴더를 둘 수 있어요.</span><span data-l="en">Choose the position under Settings › Home Screen › Dock. Drag a folder onto the dock to keep it there.</span></p>
+          <p><span data-l="ko">설정 › 홈 화면 › 도크에서 위치를 고를 수 있어요. 폴더를 독으로 끌어다 놓으면 독에도 폴더를 둘 수 있어요. 폭이 넓은 커버 화면(폴드8 등)에서 하단 독을 쓸 때는 설정 › 홈 화면 › 도크의 <b>화면 폭 전체 쓰기</b>로 격자를 끝까지 넓힐 수 있어요.</span><span data-l="en">Choose the position under Settings › Home Screen › Dock. Drag a folder onto the dock to keep it there. On wide cover screens (e.g. Fold8) with the bottom dock, <b>Use the full screen width</b> under Settings › Home screen › Dock widens the grid to the edges.</span></p>
           <figure class="faq-shot"><img src="assets/faq/shot-dock.webp" width="360" height="840" loading="lazy" alt=""><figcaption><span data-l="ko">설정 › 홈 화면 레이아웃 › 도크</span><span data-l="en">Settings › Home Screen › Dock</span></figcaption></figure>
         </div>
       </details>
@@ -765,6 +778,12 @@
         <div class="update-body">
           <p><span data-l="ko">기본 설정은 접은 화면과 펼친 화면이 같은 배치를 함께 쓰는 방식이에요. 따로 쓰려면 설정 › 홈 화면 › <b>화면마다 따로 쓰기</b>를 골라 주세요. (위젯과 폴더는 따로 쓰기에서도 함께 써요.)</span><span data-l="en">By default the cover and unfolded screens share one layout. To keep them apart, choose <b>Keep separate layouts</b> under Settings › Home Screen. (Widgets and folders are still shared.)</span></p>
           <figure class="faq-shot"><img src="assets/faq/shot-layout-sync.webp" width="360" height="840" loading="lazy" alt=""><figcaption><span data-l="ko">설정 › 홈 화면 레이아웃</span><span data-l="en">Settings › Home Screen</span></figcaption></figure>
+        </div>
+      </details>
+      <details class="update faq" id="faq-recents-wallpaper">
+        <summary><span class="title"><span data-l="ko">최근 앱 화면에서 보이는 배경이 홈 배경과 달라요.</span><span data-l="en">The background behind recent apps is different from my home background.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">최근 앱 화면 뒤에는 런처 배경이 아니라 시스템 배경화면이 보여요. 설정 › 배경화면 및 모양의 런처 배경에서 사진을 고른 뒤 <b>시스템 배경화면에도 적용</b>을 누르면 같아져요(1.0.10부터).</span><span data-l="en">Recent apps shows the system wallpaper, not the launcher background. Pick a photo under Settings › Wallpaper &amp; Appearance › Launcher background and tap <b>Also set as system wallpaper</b> to match them (from 1.0.10).</span></p>
         </div>
       </details>
       <details class="update faq" id="faq-hide">
@@ -795,10 +814,16 @@
       </details>
       <h3 class="faq-group"><span data-l="ko">제스처 · 상태 표시</span><span data-l="en">Gestures & status</span></h3>
       <details class="update faq" id="faq-gestures">
-        <summary><span class="title"><span data-l="ko">위로 쓸어 검색이나 '모든 앱' 페이지를 끄고 싶어요.</span><span data-l="en">I want to turn off swipe-up search or the All Apps page.</span></span></summary>
+        <summary><span class="title"><span data-l="ko">검색 버튼이나 위로 쓸어 검색, '모든 앱' 페이지를 끄고 싶어요.</span><span data-l="en">I want to hide the search button, or turn off swipe-up search or the All Apps page.</span></span></summary>
         <div class="update-body">
-          <p><span data-l="ko">설정 › 제스처 및 검색에서 둘 다 켜고 끌 수 있어요. ('모든 앱'은 1.0.8까지 '앱 보관함'이라는 이름이었어요.)</span><span data-l="en">Both can be turned on or off under Settings › Gestures &amp; Search. (All Apps was called 'App Library' up to 1.0.8.)</span></p>
+          <p><span data-l="ko">설정 › 제스처 및 검색에서 <b>검색 버튼 표시</b>(세로 독 오른쪽 아래 돋보기와 하단 독의 '검색' 알약), <b>위로 쓸어 검색 열기</b>, <b>모든 앱 페이지</b>를 각각 끌 수 있어요(검색 버튼은 1.0.11부터). 앱을 찾을 길이 하나는 남도록 셋 중 하나는 꺼지지 않아요. ('모든 앱'은 1.0.8까지 '앱 보관함'이라는 이름이었어요.)</span><span data-l="en">Under Settings › Gestures &amp; Search you can turn off <b>Show search button</b> (the magnifier at the bottom right of the side dock and the Search pill above the bottom dock), <b>Swipe up to search</b> and <b>All Apps page</b> separately (the search button from 1.0.11). One of the three always stays on so you can still find apps. (All Apps was called 'App Library' up to 1.0.8.)</span></p>
           <figure class="faq-shot"><img src="assets/faq/shot-gestures.webp" width="360" height="840" loading="lazy" alt=""><figcaption><span data-l="ko">설정 › 제스처 및 검색</span><span data-l="en">Settings › Gestures &amp; Search</span></figcaption></figure>
+        </div>
+      </details>
+      <details class="update faq" id="faq-swipe-home">
+        <summary><span class="title"><span data-l="ko">위로 쓸었더니 검색 대신 첫 페이지로 가요.</span><span data-l="en">Swiping up takes me to the first page instead of opening search.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">화면 맨 아래 가장자리에서 쓸면 안드로이드의 '홈으로' 제스처가 먼저 받아서, 런처는 홈 신호를 받고 첫 페이지로 돌아가요. 검색은 홈 화면 가운데쯤에서 위로 쓸어 주세요. 이건 시스템 동작이라 앱에서 바꿀 수 없어요.</span><span data-l="en">A swipe from the very bottom edge is taken by Android's 'go home' gesture first, so the launcher gets a home signal and returns to the first page. Swipe up from around the middle of the home screen to search. This is system behavior apps can't change.</span></p>
         </div>
       </details>
       <details class="update faq" id="faq-shade">
@@ -815,6 +840,13 @@
           <figure class="faq-shot"><img src="assets/faq/shot-status.webp" width="360" height="840" loading="lazy" alt=""><figcaption><span data-l="ko">설정 › 제스처 및 검색 (1.0.9)</span><span data-l="en">Settings › Gestures &amp; Search (1.0.9)</span></figcaption></figure>
         </div>
       </details>
+      <details class="update faq" id="faq-battery">
+        <summary><span class="title"><span data-l="ko">접은 화면에서도 배터리 숫자(%)를 보고 싶어요.</span><span data-l="en">I want to see the battery percentage on the cover screen.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">1.0.11부터 설정 › 제스처 및 검색의 <b>접은 화면에 배터리 숫자</b>를 켜면 세로 독 상태 링 아래에 % 숫자가 나와요. 하단 독과 펼친 화면은 원래 숫자가 보여요.</span><span data-l="en">From 1.0.11, turn on <b>Battery percentage on the cover screen</b> under Settings › Gestures &amp; Search and the percentage appears under the status ring of the side dock. The bottom dock and the unfolded screen already show it.</span></p>
+          <figure class="faq-shot"><img src="assets/faq/shot-battery.webp" width="360" height="840" loading="lazy" alt=""><figcaption><span data-l="ko">설정 › 제스처 및 검색</span><span data-l="en">Settings › Gestures &amp; Search</span></figcaption></figure>
+        </div>
+      </details>
       <details class="update faq" id="faq-5g">
         <summary><span class="title"><span data-l="ko">5G 표시가 되나요?</span><span data-l="en">Does it show 5G?</span></span></summary>
         <div class="update-body">
@@ -828,6 +860,12 @@
         </div>
       </details>
       <h3 class="faq-group"><span data-l="ko">기타</span><span data-l="en">Other</span></h3>
+      <details class="update faq" id="faq-open-effect">
+        <summary><span class="title"><span data-l="ko">앱을 열 때 아이콘에서 커지는 효과가 안 나와요.</span><span data-l="en">Apps don't zoom out of their icons when I open them.</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">삼성 One UI는 기본 런처가 아닌 런처에서 앱을 열 때 자체 전환 효과만 써요. 1.0.10에서 여러 방식을 실제 폴드에서 시험했지만 모두 같은 기본 효과로 바뀌어서, 앱에서 바꿀 수 없어요.</span><span data-l="en">Samsung One UI uses its own transition when apps are opened from a launcher other than the built-in one. We tried several approaches on a real Fold in 1.0.10 and all were replaced by the same default, so this can't be changed by an app.</span></p>
+        </div>
+      </details>
       <details class="update faq" id="faq-live-icons">
         <summary><span class="title"><span data-l="ko">시계·캘린더 아이콘이 움직이지 않아요.</span><span data-l="en">The clock and calendar icons don't move.</span></span></summary>
         <div class="update-body">
