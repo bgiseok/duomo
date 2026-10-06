@@ -464,10 +464,29 @@
         <p class="account-note"><span data-l="ko">업데이트는 Play 스토어 › 프로필 › <b>앱 및 기기 관리</b>에서 받거나 <a style="text-decoration:underline" href="https://play.google.com/store/apps/details?id=com.bgiseok.crease">스토어 페이지</a>를 열어 받아요. 테스트 중인 앱이라 스토어 검색에는 나오지 않아요.</span><span data-l="en">Get updates from Play Store › profile › <b>Manage apps &amp; device</b>, or open the <a style="text-decoration:underline" href="https://play.google.com/store/apps/details?id=com.bgiseok.crease">store page</a>. Apps in testing don't show up in store search.</span></p>
       </div>
 
-            <details class="update" id="v1-0-19" open>
+            <details class="update" id="v1-0-20" open>
+        <summary><span class="title"><span data-l="ko">접은 화면 첫 페이지 옵션 · 따로 쓰기 페이지 맞춤</span><span data-l="en">Left pane as first cover page, separate-layout page sync</span></span><span class="date"><span data-l="ko">26년 10월 6일</span><span data-l="en">Oct 6, 2026</span></span></summary>
+        <div class="update-body">
+        <p class="update-meta"><span class="ver">1.0.20</span><span><span data-l="ko">2026년 10월 6일</span><span data-l="en">October 6, 2026</span></span><span class="status"><span data-l="ko">검토 중 · 곧 테스터에게 배포</span><span data-l="en">In review · rolling out to testers soon</span></span></p>
+        <ul data-l="ko">
+          <li><b>접은 화면 첫 페이지에 펼친 화면 왼쪽 판</b>(설정 › 홈 화면 › 페이지, 기본 끔): 켜면 펼친 화면 왼쪽 위젯 판이 접은 화면 1페이지가 되어, 접은 1·2페이지가 펼친 첫 판의 왼쪽·오른쪽과 맞아요. (폴드8 제안)</li>
+          <li><b>따로 쓰기</b>에서 한 화면의 페이지를 지우거나 순서를 바꾸면 다른 화면의 페이지 번호도 함께 맞춰져요. 위젯은 두 화면이 공유해서, 번호가 어긋나면 펼쳤을 때 위젯이 엉뚱한 앱을 덮고 그 앱이 옮겨졌어요. 지운 페이지의 다른 화면 앱은 지우지 않고 맨 뒤 페이지로 보내요.</li>
+          <li>위젯에 덮여 옮겨지는 앱은 위젯 줄(맨 위 두 줄) 대신 앱 줄의 빈 칸으로 가요.</li>
+          <li>1.0.19의 변경(위젯 내용 크기·접은 화면 세로 채우기·꾸미기 기능 개방·검색 제스처·세워 두기 수정)을 함께 담고 있어요.</li>
+        </ul>
+        <ul data-l="en">
+          <li><b>Left pane as first cover page</b> (Settings › Home Screen › Pages, off by default): the unfolded screen's left widget pane becomes cover page 1, so cover pages 1 and 2 match the left and right halves of the first unfolded view. (Fold8 suggestion)</li>
+          <li>With <b>separate layouts</b>, deleting or reordering a page on one screen now keeps the other screen's page numbers in step. Widgets are shared between screens, so a mismatch could make a widget cover the wrong apps after unfolding and shove them aside. Apps on the deleted page of the other screen move to a last page instead of being removed.</li>
+          <li>Apps displaced by a widget now go to a free app-row cell instead of the widget rows at the top.</li>
+          <li>Includes everything from 1.0.19 (widget content size, cover fill height, customization features opened up, search gesture fixes, Stand mode fixes).</li>
+        </ul>
+        </div>
+      </details>
+
+      <details class="update" id="v1-0-19" open>
         <summary><span class="title"><span data-l="ko">위젯 내용 크기 · 접은 화면 채우기 · 꾸미기 기능 개방</span><span data-l="en">Widget content size, cover fill, customization opened up</span></span><span class="date"><span data-l="ko">26년 10월 6일</span><span data-l="en">Oct 6, 2026</span></span></summary>
         <div class="update-body">
-        <p class="update-meta"><span class="ver">1.0.19</span><span><span data-l="ko">2026년 10월 6일</span><span data-l="en">October 6, 2026</span></span><span class="status"><span data-l="ko">검토 중 · 곧 테스터에게 배포</span><span data-l="en">In review · rolling out to testers soon</span></span></p>
+        <p class="update-meta"><span class="ver">1.0.19</span><span><span data-l="ko">2026년 10월 6일</span><span data-l="en">October 6, 2026</span></span><span class="status"><span data-l="ko">1.0.20에 묶어 배포</span><span data-l="en">Shipping together with 1.0.20</span></span></p>
         <ul data-l="ko">
           <li><b>위젯 내용 크기</b>: 편집 모드에서 위젯을 누르면 크기 조절 틀 아래에 '내용 크기' −/+ 가 생겨요. 칸은 그대로 두고 안의 글씨·그림만 80~130%로. 메뉴의 '크기 및 위치'는 바로 이 틀을 열고, 손잡이를 끌면 위젯 내용도 그 크기로 미리 보여요. (폴드8 제안)</li>
           <li>삼성 캘린더·날씨처럼 홈 화면에서만 세부 내용을 보여 주는 위젯이 Duomo에서도 일정·시간별 예보를 보여 줘요. 위젯에 "홈 화면에 놓였다"고 알려 주지 않던 문제. (폴드8 제보)</li>
@@ -523,24 +542,25 @@
         </div>
       </details>
 
-      <details class="update" id="v1-0-16" open>
-        <summary><span class="title"><span data-l="ko">펼친 화면 위젯 키우기 · 접은 화면 세로 고정 · 버그 수정</span><span data-l="en">Bigger widgets when unfolded, cover locked to portrait, fixes</span></span><span class="date"><span data-l="ko">26년 10월 5일</span><span data-l="en">Oct 5, 2026</span></span></summary>
-        <div class="update-body">
-        <p class="update-meta"><span class="ver">1.0.16</span><span><span data-l="ko">2026년 10월 5일</span><span data-l="en">October 5, 2026</span></span><span class="status"><span data-l="ko">테스터에게 배포됨</span><span data-l="en">Rolled out to testers</span></span></p>
-        <ul data-l="ko">
-          <li>펼친 화면에서 설정 › 홈 화면 › <b>세로로 채우기</b>를 켜면 위젯 칸도 줄과 함께 커져요. 날씨 시간별 예보나 캘린더 일정처럼 위젯이 높이에 따라 줄이던 내용이 펼친 화면에서도 나와요. (펼친 화면 위젯이 접은 화면보다 낮아 내용이 줄던 제보)</li>
-          <li>세로로 채우기를 켜도 오른쪽 독은 기본 크기를 유지하고 앱 줄 가운데에 놓여요.</li>
-          <li>접은 화면은 세로로 고정돼요. 접은 채 눕히면 펼친 화면 배치가 그려지던 문제를 고쳤어요.</li>
-        </ul>
-        <ul data-l="en">
-          <li>On the unfolded screen, turn on Settings › Home Screen › <b>Fill height</b> and the widget rows grow with the app rows, so content widgets drop at smaller heights, like hourly weather or calendar events, shows there too. (Reported: unfolded widgets were shorter than on the cover.)</li>
-          <li>With Fill height on, the side dock keeps its normal size, centered on the app rows.</li>
-          <li>The cover screen is locked to portrait. Turning the folded phone sideways used to draw the unfolded layout.</li>
-        </ul>
-        </div>
-      </details>
       <details class="older-updates">
         <summary><span data-l="ko">이전 업데이트 보기 (1.0.2 ~ 1.0.13)</span><span data-l="en">Earlier updates (1.0.2 – 1.0.13)</span></summary>
+        <details class="update" id="v1-0-16">
+          <summary><span class="title"><span data-l="ko">펼친 화면 위젯 키우기 · 접은 화면 세로 고정 · 버그 수정</span><span data-l="en">Bigger widgets when unfolded, cover locked to portrait, fixes</span></span><span class="date"><span data-l="ko">26년 10월 5일</span><span data-l="en">Oct 5, 2026</span></span></summary>
+          <div class="update-body">
+          <p class="update-meta"><span class="ver">1.0.16</span><span><span data-l="ko">2026년 10월 5일</span><span data-l="en">October 5, 2026</span></span><span class="status"><span data-l="ko">테스터에게 배포됨</span><span data-l="en">Rolled out to testers</span></span></p>
+          <ul data-l="ko">
+            <li>펼친 화면에서 설정 › 홈 화면 › <b>세로로 채우기</b>를 켜면 위젯 칸도 줄과 함께 커져요. 날씨 시간별 예보나 캘린더 일정처럼 위젯이 높이에 따라 줄이던 내용이 펼친 화면에서도 나와요. (펼친 화면 위젯이 접은 화면보다 낮아 내용이 줄던 제보)</li>
+            <li>세로로 채우기를 켜도 오른쪽 독은 기본 크기를 유지하고 앱 줄 가운데에 놓여요.</li>
+            <li>접은 화면은 세로로 고정돼요. 접은 채 눕히면 펼친 화면 배치가 그려지던 문제를 고쳤어요.</li>
+          </ul>
+          <ul data-l="en">
+            <li>On the unfolded screen, turn on Settings › Home Screen › <b>Fill height</b> and the widget rows grow with the app rows, so content widgets drop at smaller heights, like hourly weather or calendar events, shows there too. (Reported: unfolded widgets were shorter than on the cover.)</li>
+            <li>With Fill height on, the side dock keeps its normal size, centered on the app rows.</li>
+            <li>The cover screen is locked to portrait. Turning the folded phone sideways used to draw the unfolded layout.</li>
+          </ul>
+          </div>
+        </details>
+
         <details class="update" id="v1-0-15">
           <summary><span class="title"><span data-l="ko">따로 쓰기 앱 사라짐 · 위젯 놓기 · 폴더 모서리 수정</span><span data-l="en">Fixes for separate layouts, widget placement and folder corners</span></span><span class="date"><span data-l="ko">26년 10월 5일</span><span data-l="en">Oct 5, 2026</span></span></summary>
           <div class="update-body">
