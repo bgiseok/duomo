@@ -94,6 +94,21 @@
   .btn.primary:hover { background: #2a95ff; }
   .btn.ghost { background: var(--glass); border: 1px solid var(--line); }
   .btn.ghost:hover { background: rgba(255, 255, 255, .1); }
+  .btn.warm { background: var(--warm); color: #1a1206; }
+  .btn.warm:hover { background: #f7b273; }
+  /* 후원 */
+  .support-card { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: center; padding: clamp(24px, 4vw, 44px); border-radius: var(--radius);
+    border: 1px solid rgba(244, 163, 92, .28); background: linear-gradient(135deg, rgba(244, 163, 92, .16), rgba(10, 132, 255, .07) 70%, var(--bg-raise)); }
+  .support-card h2 { margin: 6px 0 10px; }
+  .support-card .note { color: var(--muted); margin: 0; }
+  .support-card .small { font-size: 14px; color: var(--faint); margin-top: 14px; }
+  .support-cup { font-size: clamp(72px, 10vw, 128px); line-height: 1; text-align: center; filter: drop-shadow(0 12px 30px rgba(244, 163, 92, .35)); }
+  @media (max-width: 760px) { .support-card { grid-template-columns: 1fr; text-align: center; } .support-card .ctas { justify-content: center !important; } .support-cup { font-size: 72px; } }
+  .support-float { position: fixed; right: 16px; bottom: 16px; z-index: 9; display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 999px;
+    background: var(--warm); color: #1a1206; font-weight: 700; font-size: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, .45); transition: opacity .25s, transform .25s; }
+  .support-float[hidden] { display: none; }
+  .support-float.away { opacity: 0; transform: translateY(12px); pointer-events: none; }
+  .support-float:hover { background: #f7b273; }
   .btn[aria-disabled="true"] { background: var(--glass); color: var(--muted); border: 1px solid var(--line); pointer-events: none; }
 
   /* 기기 틀: 폴드 화면은 모서리가 거의 각져 있다 */
@@ -267,6 +282,7 @@
       <a href="#story"><span data-l="ko">왜 베타?</span><span data-l="en">Why beta</span></a>
       <a href="#beta"><span data-l="ko">베타 테스트</span><span data-l="en">Beta</span></a>
       <a href="#updates"><span data-l="ko">업데이트</span><span data-l="en">Updates</span></a>
+      <a href="#support"><span data-l="ko">후원</span><span data-l="en">Support</span></a>
       <a href="#faq"><span data-l="ko">FAQ</span><span data-l="en">FAQ</span></a>
       <button class="lang" type="button" id="lang-toggle" aria-label="Language"><span data-l="ko">EN</span><span data-l="en">한국어</span></button>
     </nav>
@@ -302,7 +318,7 @@
     <div class="pills reveal">
       <div class="pill"><strong><span data-l="ko">광고 0개</span><span data-l="en">Zero ads</span></strong><span data-l="ko">설정할 때도, 검색할 때도</span><span data-l="en">Not in settings, not in search</span></div>
       <div class="pill"><strong><span data-l="ko">계정 없이</span><span data-l="en">No account</span></strong><span data-l="ko">모든 설정은 기기 안에만</span><span data-l="en">Every setting stays on your phone</span></div>
-      <div class="pill"><strong><span data-l="ko">권한은 선택만</span><span data-l="en">Optional permissions only</span></strong><span data-l="ko">연락처 검색 · 알림 배지</span><span data-l="en">Contact search · notification badges</span></div>
+      <div class="pill"><strong><span data-l="ko">권한은 선택만</span><span data-l="en">Optional permissions only</span></strong><span data-l="ko">연락처 검색 · 알림 배지 · 두 번 탭 끄기</span><span data-l="en">Contact search · badges · double-tap to sleep</span></div>
       <div class="pill"><strong><span data-l="ko">모든 기능 무료</span><span data-l="en">Free, all of it</span></strong><span data-l="ko">결제 화면도, 체험 기간도 없이</span><span data-l="en">No paywalls, no trials</span></div>
     </div>
   </div>
@@ -353,6 +369,7 @@
         <h2><span data-l="ko">커버는 커버대로.<small>펼치면 펼친 대로.</small></span><span data-l="en">Folded or open.<small>Each screen gets its own fit.</small></span></h2>
         <p><span data-l="ko">갤럭시 Z 폴드7·폴드8·폴드8 울트라는 커버와 펼친 화면을 기종별로 맞췄어요. 일반 폰도 화면 비율과 카메라 위치를 읽어 여백을 맞춰요.</span><span data-l="en">Galaxy Z Fold7, Fold8 and Fold8 Ultra get per-model layouts for the cover and the inner screen. On any other phone, margins follow your screen ratio and camera cutout.</span></p>
         <p><span data-l="ko">접은 화면과 펼친 화면의 앱 배치는 하나로 맞춰 쓰거나 화면마다 따로 쓸 수 있어요. 펼친 화면의 독은 오른쪽 세로형과 아래 가로형 중에 골라요.</span><span data-l="en">Share one app layout between the folded and unfolded screens, or keep a separate one for each. On the unfolded screen, put the dock on the side or along the bottom.</span></p>
+        <p><span data-l="ko">살짝 벌려 세우거나 반 접어 두면 시계·달력·사진이 뜨는 <b>세워 두기 화면</b>, 사진 여러 장으로 만드는 <b>잠금화면 빌더</b>, 홈 빈 곳을 <b>두 번 탭해 화면 끄기</b>까지 — 폴더블에서 아쉬웠던 것들을 넣었어요.</span><span data-l="en">Prop it slightly open or half-fold it and a clock, calendar or photo <b>stand screen</b> appears. Build a <b>lock screen</b> from several photos, and <b>double-tap</b> an empty spot to turn the screen off — the little things foldables were missing.</span></p>
       </div>
       <div class="visual">
         <div class="fold-pair">
@@ -912,6 +929,24 @@
     </div>
   </section>
 
+  <section id="support">
+    <div class="wrap reveal">
+      <div class="support-card">
+        <div>
+          <p class="kicker"><span data-l="ko">후원</span><span data-l="en">Support</span></p>
+          <h2><span data-l="ko">광고 없이, 계속.<small>커피 한 잔이면 충분해요.</small></span><span data-l="en">Ad-free, for good.<small>A coffee is plenty.</small></span></h2>
+          <p class="note"><span data-l="ko">Duomo는 한 사람이 만드는 광고 없는 런처예요. 모든 기능은 무료고, 앞으로도 광고를 넣지 않아요. 마음에 들었다면 커피 한 잔으로 응원해 주세요. 후원은 선택이고, 후원해도 앱 기능이 열리거나 달라지지 않아요.</span><span data-l="en">Duomo is an ad-free launcher made by one person. Every feature is free and there will never be ads. If it made your phone feel better, buy me a coffee. Support is optional and doesn't unlock or change anything in the app.</span></p>
+          <div class="ctas" style="justify-content:flex-start;margin-top:18px">
+            <a class="btn warm" href="https://buymeacoffee.com/bgiseok" target="_blank" rel="noopener" data-goatcounter-click="support-section">☕ <span data-l="ko">커피 한 잔 보내기</span><span data-l="en">Buy me a coffee</span></a>
+            <a class="btn ghost" href="https://bgiseok.github.io/duomo-legal/support.html" data-goatcounter-click="support-more"><span data-l="ko">후원 안내</span><span data-l="en">About support</span></a>
+          </div>
+          <p class="note small"><span data-l="ko">결제는 Buy Me a Coffee(해외 카드 결제)가 처리해요. 후원금은 Duomo를 더 좋게 만드는 데 써요.</span><span data-l="en">Payments are handled by Buy Me a Coffee. Every coffee goes toward making Duomo better.</span></p>
+        </div>
+        <div class="support-cup" aria-hidden="true">☕</div>
+      </div>
+    </div>
+  </section>
+
   <section id="faq">
     <div class="wrap updates reveal">
       <div class="center">
@@ -1156,6 +1191,25 @@
           <p><span data-l="ko">지금은 앱을 끄는 동안 위쪽에 나오는 페이지 숫자와 +에 놓는 방식으로 옮겨요. 화면 끝 넘기기는 당분간 넣지 않기로 했어요.</span><span data-l="en">For now, drop the app on the page numbers or + that appear at the top while dragging. Edge paging isn't planned for the time being.</span></p>
         </div>
       </details>
+      <details class="update faq" id="faq-double-tap">
+        <summary><span class="title"><span data-l="ko">홈을 두 번 탭해 화면을 끄려면요? 접근성 권한은 왜 필요한가요?</span><span data-l="en">How do I double-tap to turn the screen off, and why does it need accessibility?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">설정 › 제스처 및 검색 › <b>홈 두 번 탭으로 화면 끄기</b>를 켜면 안내가 뜨고, '설정 열기'를 누르면 안드로이드 접근성 설정으로 가요. 거기서 설치된 앱 › <b>Duomo 제스처</b>의 <b>맨 위 토글</b>을 켜 주세요(아래 '바로가기' 토글이 아니에요). 그다음 홈의 빈 곳(아이콘 없는 칸 포함)을 두 번 탭하면 꺼져요. 1.0.22부터.</span><span data-l="en">Turn on Settings › Gestures &amp; search › <b>Double-tap Home to turn off the screen</b>, then tap 'Open settings' in the prompt. In Android's Accessibility settings, open Installed apps › <b>Duomo gestures</b> and switch on the <b>top toggle</b> (not the 'shortcut' toggle below). Then double-tap an empty spot on Home. Since 1.0.22.</span></p>
+          <p><span data-l="ko">안드로이드는 앱이 화면을 끄려면 접근성 서비스나 기기 관리자 권한 중 하나를 요구해요. 기기 관리자 방식은 삼성에서 잠근 뒤 지문 해제가 막혀서 접근성 방식을 골랐어요. 이 서비스는 <b>화면 끄기와 알림창 열기에만</b> 쓰고, 화면 내용을 읽거나 다른 앱을 지켜보지 않아요. 지문 해제에는 영향이 없어요.</span><span data-l="en">Android only lets an app turn the screen off through an accessibility service or device-admin rights. Device admin blocks fingerprint unlock on Samsung phones after locking, so Duomo uses the accessibility route. The service is used <b>only to lock the screen and open the shade</b>; it never reads screen content or watches other apps. Fingerprint unlock is unaffected.</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-extra-row">
+        <summary><span class="title"><span data-l="ko">홈 아래에 앱 한 줄을 더 둘 수 있나요?</span><span data-l="en">Can I add one more row of apps at the bottom of Home?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">설정 › 홈 화면 레이아웃 › <b>베타 › 홈 아래 한 줄 더</b>를 켜면 격자 아래 남는 공간에 앱 4칸 줄이 더 생겨요. 접은 화면·펼친 화면 모두, 공간이 한 줄 이상 남을 때만 보여요. 앱과 폴더만 둘 수 있고(위젯은 안 돼요), 편집 모드에서 끌어다 놓으면 돼요. 아직 베타라 이상한 점은 알려 주세요. 1.0.22부터.</span><span data-l="en">Turn on Settings › Home layout › <b>Beta › Extra home row</b>. When there is room below the grid, a row of 4 app slots appears on both the cover and the inner screen. Apps and folders only (no widgets); drag them in from edit mode. It's a beta, so tell me if anything looks off. Since 1.0.22.</span></p>
+        </div>
+      </details>
+      <details class="update faq" id="faq-lock-builder">
+        <summary><span class="title"><span data-l="ko">잠금화면 빌더는 어디 있나요? 무료인가요?</span><span data-l="en">Where is the lock screen builder, and is it free?</span></span></summary>
+        <div class="update-body">
+          <p><span data-l="ko">설정 › 배경화면 및 모양 › <b>잠금화면 빌더</b>. 사진을 여러 장 넣고 각각 시계 위치·글꼴을 정하고, 사람·사물 앞으로 시계가 살짝 가려지는 심도 효과를 켤 수 있어요. 잠금화면에 라이브 배경화면으로 적용돼요. 비공개 테스트 동안은 아이콘 어둡게·색조와 함께 모두에게 열려 있어요. 업데이트한 분께는 세워 두기 화면과 함께 안내가 한 번 떠요.</span><span data-l="en">Settings › Wallpaper &amp; appearance › <b>Lock screen builder</b>. Add several photos, set the clock position and font for each, and turn on a depth effect that tucks the clock behind people and objects. It's applied as a live wallpaper on the lock screen. During the closed beta it's open to everyone, along with dark and tinted icons. If you updated, a one-time intro to it and the stand screen appears.</span></p>
+        </div>
+      </details>
       <details class="update faq" id="faq-report">
         <summary><span class="title"><span data-l="ko">버그나 의견은 어디로 보내나요?</span><span data-l="en">Where do I send bugs or feedback?</span></span></summary>
         <div class="update-body">
@@ -1179,6 +1233,24 @@
     <p style="margin:6px 0 0">© 2026 Duomo</p>
   </div>
 </footer>
+<a class="support-float away" id="support-float" href="https://buymeacoffee.com/bgiseok" target="_blank" rel="noopener" data-goatcounter-click="support-float" hidden>☕ <span data-l="ko">응원하기</span><span data-l="en">Support</span></a>
+
+<script>
+  // 떠 있는 후원 알약: 첫 화면을 지나면 보이고, 후원 섹션이 보이는 동안은 숨긴다(중복 방지)
+  (function () {
+    var pill = document.getElementById('support-float'), sec = document.getElementById('support');
+    if (!pill) return;
+    var secVisible = false, shown = false;
+    function update() {
+      var past = (window.scrollY || document.documentElement.scrollTop) > 700;
+      var show = past && !secVisible;
+      if (show && !shown) { pill.hidden = false; shown = true; requestAnimationFrame(function () { pill.classList.remove('away'); }); }
+      else if (!show && shown) { pill.classList.add('away'); shown = false; }
+    }
+    if ('IntersectionObserver' in window && sec) new IntersectionObserver(function (es) { secVisible = es[0].isIntersecting; update(); }, { threshold: 0.15 }).observe(sec);
+    window.addEventListener('scroll', update, { passive: true }); update();
+  })();
+</script>
 
 <script>
   // 링크: 비어 있으면 아직 없음. beta = 테스터 참여 링크(Google 그룹), play = 정식 출시 뒤 스토어 주소
