@@ -76,6 +76,13 @@ ul{margin:0; padding-left:1.2em; display:flex; flex-direction:column; gap:6px}
 .chk{width:9px; height:9px; border:1.5px solid var(--phone-btn); border-radius:2px; display:inline-block}
 .chk.on{background:var(--phone-btn)}
 .example{font-size:.8rem; color:var(--muted)}
+.coupons{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px}
+.coupon{border:1px solid var(--line); border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:8px; min-width:0}
+.codes{margin:0; padding-left:1.3em; display:flex; flex-direction:column; gap:6px}
+.codes li{display:flex; flex-wrap:wrap; align-items:center; gap:8px}
+.codes code{font-family:var(--mono); font-size:.92rem; letter-spacing:.04em; user-select:all; word-break:break-all}
+.mini{font-size:.8rem; color:var(--accent); text-decoration:none; border:1px solid var(--line); border-radius:8px; padding:1px 8px}
+.ch{margin:0; font-size:1.05rem}
 </style>
 </head>
 <body>
@@ -149,6 +156,13 @@ ul{margin:0; padding-left:1.2em; display:flex; flex-direction:column; gap:6px}
       <li><b>워치 페이스 3개</b>: 갤럭시 워치4 이후 모델 같은 Wear OS 워치가 있어야 해요. 휴대폰 Play 스토어에서 설치할 기기로 워치를 고르면 돼요.</li>
       <li>워치가 없어도 괜찮아요. 1, 2단계만 해 주시면 충분해요.</li>
     </ul>
+    <!--COUPONS-->
+<div class="box">
+<h3 class="ch">워치페이스 무료 쿠폰</h3>
+<p class="muted">워치가 있는 분만 써 주세요. 앱마다 <b>맨 위 코드</b>부터 하나만 쓰면 돼요. 쓰인 코드는 30분마다 정리돼요. 맨 위 코드가 이미 쓰였다고 나오면 다음 코드를 써 주세요. '바로 사용'을 누르거나, Play 스토어 → 프로필 → 결제 및 정기 결제 → 코드 사용에 입력하면 그 앱이 무료로 구매돼요.</p>
+<div class="coupons"><div class="coupon"><div class="app-name">사계절 꽃</div><ol class="codes"><li><code>HEASPXTXBJ0TZEY0JUJDVWN</code><a class="mini" href="https://play.google.com/redeem?code=HEASPXTXBJ0TZEY0JUJDVWN" target="_blank" rel="noopener">바로 사용</a></li><li><code>RRTAA0JDT052J439UWBJU2V</code><a class="mini" href="https://play.google.com/redeem?code=RRTAA0JDT052J439UWBJU2V" target="_blank" rel="noopener">바로 사용</a></li><li><code>PYBYSMRJFKGN9V9KL2TM5HU</code><a class="mini" href="https://play.google.com/redeem?code=PYBYSMRJFKGN9V9KL2TM5HU" target="_blank" rel="noopener">바로 사용</a></li></ol><p class="muted">남은 쿠폰 10개</p></div><div class="coupon"><div class="app-name">픽셀 고양이 LCD</div><ol class="codes"><li><code>0QNB8V4QVK4PSGRWTP8P0G4</code><a class="mini" href="https://play.google.com/redeem?code=0QNB8V4QVK4PSGRWTP8P0G4" target="_blank" rel="noopener">바로 사용</a></li><li><code>KGCYADW10T62HM7G8DVGA6B</code><a class="mini" href="https://play.google.com/redeem?code=KGCYADW10T62HM7G8DVGA6B" target="_blank" rel="noopener">바로 사용</a></li><li><code>B2SNFFY49JEZ74M5MLMAAEB</code><a class="mini" href="https://play.google.com/redeem?code=B2SNFFY49JEZ74M5MLMAAEB" target="_blank" rel="noopener">바로 사용</a></li></ol><p class="muted">남은 쿠폰 10개</p></div><div class="coupon"><div class="app-name">오픈하트 블룸</div><ol class="codes"><li><code>G7X3TDJYDQV4LDA7CE71GMD</code><a class="mini" href="https://play.google.com/redeem?code=G7X3TDJYDQV4LDA7CE71GMD" target="_blank" rel="noopener">바로 사용</a></li><li><code>LU91X90LLMCBFJ1491TYWV5</code><a class="mini" href="https://play.google.com/redeem?code=LU91X90LLMCBFJ1491TYWV5" target="_blank" rel="noopener">바로 사용</a></li><li><code>XW7SK8NJ2HD5TUY5F533XFU</code><a class="mini" href="https://play.google.com/redeem?code=XW7SK8NJ2HD5TUY5F533XFU" target="_blank" rel="noopener">바로 사용</a></li></ol><p class="muted">남은 쿠폰 10개</p></div></div>
+</div>
+<!--/COUPONS-->
     <div class="shots">
       <div class="shot">
         <div class="phone" aria-hidden="true"><div class="sb"><span>9:41</span><span>▮▮▮</span></div>
@@ -176,7 +190,7 @@ ul{margin:0; padding-left:1.2em; display:flex; flex-direction:column; gap:6px}
     <ul>
       <li><b>14일 동안 그룹과 테스트에서 나가지 말아 주세요.</b> Play 정식 출시 조건이 '테스터 12명이 14일 동안 참여'예요.</li>
       <li>워치 페이스 3개는 지금 Google 검토 중이라, 링크가 '찾을 수 없음'으로 나오면 하루쯤 뒤에 다시 눌러 주세요.</li>
-      <li>워치 페이스는 유료 앱이라 설치 화면에 가격이 보여요. 구매는 선택이에요.</li>
+      <li>워치 페이스는 유료 앱이에요. 워치가 있는 분은 3단계의 무료 쿠폰으로 받아 주세요.</li>
       <li>써 보고 불편한 점은 Duomo(duomokor@gmail.com)로 보내 주세요.</li>
     </ul>
   </div>
