@@ -48,7 +48,7 @@ p{margin:0}
 .app .btn{min-height:40px; padding:0 14px; font-size:.88rem; white-space:nowrap}
 @media (max-width:420px){.app{grid-template-columns:48px 1fr} .app img{width:48px;height:48px} .app .btn{grid-column:1 / -1}}
 .more{display:flex; flex-direction:column}
-.more summary{list-style:none; cursor:pointer; align-self:flex-start; min-height:40px; display:inline-flex; align-items:center; gap:6px; padding:0 14px; border:1px solid var(--line); border-radius:10px; background:var(--card); font-size:.9rem; font-weight:600; color:var(--muted)}
+.more summary{list-style:none; cursor:pointer; min-height:44px; display:flex; justify-content:center; align-items:center; gap:6px; padding:0 14px; border:1px solid var(--line); border-radius:10px; background:var(--card); font-size:.9rem; font-weight:600; color:var(--muted)}
 .more summary::-webkit-details-marker{display:none}
 .more summary::after{content:'▾'; transition:transform .2s}
 .more[open] summary::after{transform:rotate(180deg)}
@@ -136,7 +136,7 @@ ul{margin:0; padding-left:1.2em; display:flex; flex-direction:column; gap:6px}
     <p class="muted">그룹 가입은 한 번이면 되지만, Play는 앱마다 따로 참여 표시를 받아요. 아래 앱을 하나씩 열어 파란 버튼을 눌러 주세요. 이것까지만 해도 출시에 큰 도움이 돼요.</p>
     <div class="apps" id="apps"></div>
     <details class="more">
-      <summary><span>테스터가 다 찬 앱 <span id="more-n"></span>개 더보기</span></summary>
+      <summary><span>더 보기</span></summary>
       <p class="muted">12명이 모여 지금은 14일을 채우는 중이에요. 이미 참여하셨다면 나가지 말고 그대로 두시면 돼요. 새로 참여하셔도 괜찮아요.</p>
       <div class="apps" id="apps-full"></div>
     </details>
@@ -226,7 +226,6 @@ for(const a of APPS){
     <a class="btn" href="https://play.google.com/apps/testing/${a.pkg}" target="_blank" rel="noopener">테스터 되기</a>`;
   (a.full ? more : box).appendChild(el);
 }
-document.getElementById('more-n').textContent=APPS.filter(a=>a.full).length;
 </script>
 </body>
 </html>
