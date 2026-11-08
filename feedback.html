@@ -75,16 +75,18 @@
   </p>
 </main>
 <script>
-  // Google 설문지(Duomo 문제 신고 · 의견). 칸 번호는 설문의 '미리 채워진 링크'에서 읽었다. 설문 항목을 바꾸면 여기도 바꾼다
-  var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSdkAEHRf5kOAFS_VtBlxeaE4tZEi_Zw_k-CKiTg59d_Qu2sLw/viewform';
-  var ENTRY = { type: 2029620163, version: 240312042, device: 671206337, screen: 1212878873 };
+  // Google 설문지(Duomo 문제 신고 · 의견, 11/8 duomokor 계정에 새로 만듦 — '오류 정보' 칸 추가). 칸 번호는 공개 설문 데이터에서 읽었다.
+  // 설문 항목을 바꾸면 여기도 바꾼다. 예전 설문(bgiseok, 1FAIpQLSdkAE…)의 응답은 그쪽에 그대로 있다
+  var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSeCMGX9A0FKv6pPvirgGE1HUrGdXIEot74xf1xX-YVr6bo8tw/viewform';
+  var ENTRY = { type: 890686875, version: 183469762, device: 1850892941, screen: 283473167, error: 1976796570 };
   var TYPES = { bug: '버그 · Bug', idea: '개선 요청 · Suggestion', other: '기타 · Other' };
 
-  // 앱이 붙여 보내는 값: v = 앱 버전, d = 기기·안드로이드, s = 화면, t = bug|idea|other
+  // 앱이 붙여 보내는 값: v = 앱 버전, d = 기기·안드로이드, s = 화면, t = bug|idea|other, e = 오류 요약(종류·코드 위치, 메시지 없음)
   var q = new URLSearchParams(location.search);
-  var fields = { version: q.get('v'), device: q.get('d'), screen: q.get('s') };
+  var fields = { version: q.get('v'), device: q.get('d'), screen: q.get('s'), error: q.get('e') };
+  var LIMIT = { error: 900 };
   var params = new URLSearchParams({ usp: 'pp_url' });
-  Object.keys(fields).forEach(function (k) { if (fields[k]) params.set('entry.' + ENTRY[k], fields[k].slice(0, 200)); });
+  Object.keys(fields).forEach(function (k) { if (fields[k]) params.set('entry.' + ENTRY[k], fields[k].slice(0, LIMIT[k] || 200)); });
   if (TYPES[q.get('t')]) params.set('entry.' + ENTRY.type, TYPES[q.get('t')]);
   var url = FORM + '?' + params.toString();
   document.getElementById('form').src = url + '&embedded=true';
